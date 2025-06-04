@@ -1,0 +1,644 @@
+{
+    "data": [
+      {
+        "id": 10700001001,
+        "name_ar": "حي الإسكان",
+        "name_en": "Al Iskan Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001002,
+        "name_ar": "حي العين",
+        "name_en": "Al Ain Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001003,
+        "name_ar": "حي الشفا",
+        "name_en": "Al Shifa Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001004,
+        "name_ar": "حي الصفا",
+        "name_en": "Al Safa Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001005,
+        "name_ar": "حي الاخضر",
+        "name_en": "Al Akhdar Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001006,
+        "name_ar": "حي البوادي",
+        "name_en": "Al Bawadi Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001007,
+        "name_ar": "حي اليرموك",
+        "name_en": "Al Yarmuk Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001008,
+        "name_ar": "الأحياء الجنوبية",
+        "name_en": "Southern Districts",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001009,
+        "name_ar": "حي النظيم",
+        "name_en": "Al Nadheem Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001010,
+        "name_ar": "حي غرب الخالدية",
+        "name_en": "Khalidiyah West Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001011,
+        "name_ar": "حي البساتين",
+        "name_en": "Al Basatin Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001012,
+        "name_ar": "حي الحمراء",
+        "name_en": "Al Hamra Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001013,
+        "name_ar": "البلدة القديمة",
+        "name_en": "Down Town",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001014,
+        "name_ar": "حي السعادة",
+        "name_en": "Al Saadah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001015,
+        "name_ar": "حي سلطانة",
+        "name_en": "Sultanah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001016,
+        "name_ar": "حي الفيصلية الجنوبية",
+        "name_en": "Faisaliyah South Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001017,
+        "name_ar": "حي الفيصلية الشمالية",
+        "name_en": "Faisaliyah North Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001018,
+        "name_ar": "حي النهضة",
+        "name_en": "Al Nahdah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001019,
+        "name_ar": "حي الروضة",
+        "name_en": "Al Rawdah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001020,
+        "name_ar": "حي المصيف الاول",
+        "name_en": "Al Masif 1 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001021,
+        "name_ar": "حي المروج الثاني",
+        "name_en": "Al Muruj 2 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001022,
+        "name_ar": "حي الريان",
+        "name_en": "Al Rayan Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001023,
+        "name_ar": "حي الورود",
+        "name_en": "Al Wurud Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001024,
+        "name_ar": "مخطط الراجحي",
+        "name_en": "Al Rajhi Subdivision Plan",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001025,
+        "name_ar": "المدينة الجامعية",
+        "name_en": "University City",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001026,
+        "name_ar": "حي الفلاح",
+        "name_en": "Al Falah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001027,
+        "name_ar": "حي الزهراء",
+        "name_en": "Al Zahra Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001028,
+        "name_ar": "حي رايس",
+        "name_en": "Rise Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001029,
+        "name_ar": "الدوائر الحكومية و",
+        "name_en": "Government Departments Area F",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001030,
+        "name_ar": "الدوائر الحكومية ب",
+        "name_en": "Government Departments Area B",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001031,
+        "name_ar": "الدوائر الحكومية د",
+        "name_en": "Government Departments Area D",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001032,
+        "name_ar": "الدوائر الحكومية أ",
+        "name_en": "Government Departments Area A",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001033,
+        "name_ar": "حي الجامعة",
+        "name_en": "Al Jamiah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001034,
+        "name_ar": "الدوائر الحكومية ج",
+        "name_en": "Government Departments Area C",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001035,
+        "name_ar": "الدوائر الحكومية هـ",
+        "name_en": "Government Departments Area E",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001036,
+        "name_ar": "منطقة خاصة",
+        "name_en": "Private Area",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001037,
+        "name_ar": "حي الدفاع",
+        "name_en": "Al Difa Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001038,
+        "name_ar": "منطقة الخدمات أ",
+        "name_en": "Services Area A",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001039,
+        "name_ar": "منطقة الخدمات ب",
+        "name_en": "Services Area B",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001040,
+        "name_ar": "المدينة الصناعية",
+        "name_en": "Industrial City",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001041,
+        "name_ar": "حي الندى",
+        "name_en": "Al Nada Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001042,
+        "name_ar": "حي الهجن",
+        "name_en": "Al Hejin Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001043,
+        "name_ar": "مطــار الامير سلطان بن عبدالعزيز الدولي",
+        "name_en": "Prince Sultan Bin Abdulaziz International Airport",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001044,
+        "name_ar": "حي القادسية الثاني",
+        "name_en": "Al Qadisiyah 2 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001045,
+        "name_ar": "حى طيبة",
+        "name_en": "Taibah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001046,
+        "name_ar": "المنطقة الصناعية",
+        "name_en": "Industrial Area",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001047,
+        "name_ar": "حي القدس",
+        "name_en": "Al Quds Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001048,
+        "name_ar": "حي التعاون",
+        "name_en": "Al Taawun Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001049,
+        "name_ar": "حي القادسية الاول",
+        "name_en": "Al Qadisiyah 1 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001050,
+        "name_ar": "حي غرناطة",
+        "name_en": "Ghirnatah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001051,
+        "name_ar": "حي النخيل",
+        "name_en": "Al Nakheel Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001052,
+        "name_ar": "الاستاد الرياضي",
+        "name_en": "Sports Stadium",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001053,
+        "name_ar": "حي الياسمين",
+        "name_en": "Al Yasmin Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001054,
+        "name_ar": "حي السليمانية",
+        "name_en": "Al Sulimaniyah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001055,
+        "name_ar": "حي الاشرافية",
+        "name_en": "Al Ishrafiyah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001056,
+        "name_ar": "حي السلام",
+        "name_en": "Al Salam Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001057,
+        "name_ar": "حي قرطبة",
+        "name_en": "Qurtubah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001058,
+        "name_ar": "حي المروج الثالث",
+        "name_en": "Al Muruj 3 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001059,
+        "name_ar": "حي المروج الاول",
+        "name_en": "Al Muruj 1 Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001060,
+        "name_ar": "حي الربوة",
+        "name_en": "Al Rabwah  Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001061,
+        "name_ar": "حي المهرجان أ",
+        "name_en": "Al Mahrajan A Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001062,
+        "name_ar": "حي المهرجان ب",
+        "name_en": "Al Mahrajan B Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001063,
+        "name_ar": "حي الصالحية",
+        "name_en": "As Salhiyah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      },
+      {
+        "id": 10700001064,
+        "name_ar": "حي العزيزية القديمة",
+        "name_en": "Al Aziziyah Al Qadimah Dist.",
+        "city_id": 1,
+        "city_name_ar": "تبوك",
+        "city_name_en": "Tabuk",
+        "country_name_en": "Saudi Arabia",
+        "country_name_ar": "السعودية"
+      }
+    ]
+  }

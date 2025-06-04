@@ -1,0 +1,151 @@
+[
+
+    {
+      "section_name": "الهايدر",
+      "section_slug": "homepage-header",
+      "section_enable": "on",
+      "array_type": "inner_list",
+      "loop_number": "1",
+      "inner_list": [
+        {
+          "field_name": " 1 الخلفية",
+          "field_slug": "homepage_header_bg_image",
+          "field_help_text": "",
+          "field_default_text": "/themes/theme1.jpg",
+          "field_type": "photo upload"
+        },
+        {
+          "field_name": " 2 الخلفية",
+          "field_slug": "homepage_header_bg_image2",
+          "field_help_text": "",
+          "field_default_text": "/themes/theme1.jpg",
+          "field_type": "photo upload"
+        }
+        ,{
+          "field_name": " 3 الخلفية",
+          "field_slug": "homepage_header_bg_image3",
+          "field_help_text": "",
+          "field_default_text": "/themes/theme1.jpg",
+          "field_type": "photo upload"
+        }
+      ]
+    },
+    {
+      "section_name": "أفضل العقارات",
+      "section_slug": "homepage-products",
+      "section_enable": "on",
+      "array_type": "inner_list",
+      "loop_number": "1",
+      "inner_list": [
+        {
+          "field_name": "عنوان",
+          "field_slug": "homepage-products-title",
+          "field_help_text": "",
+          "field_default_text": "أفضل العقارات",
+          "field_type": "text"
+        },
+        {
+          "field_name": "وصف العنوان",
+          "field_slug": "homepage-products-sub",
+          "field_help_text": "",
+          "field_default_text": "اختر من بين أفضل العقارات",
+          "field_type": "text"
+        },
+        {
+          "field_name": "عدد العناصر المعروضة",
+          "field_slug": "homepage-st-num0",
+          "field_help_text": "",
+          "field_default_text": "9",
+          "field_type": "text"
+        },
+        {
+          "field_name": "لون العنوان",
+          "field_slug": "homepage-header-desc-color00",
+          "field_help_text": "",
+          "field_default_text": "#000000",
+          "field_type": "color"
+        },{
+          "field_name": "لون العنوان القصير",
+          "field_slug": "homepage-header-desc-color00",
+          "field_help_text": "",
+          "field_default_text": "#32a466",
+          "field_type": "color"
+        }
+      ]
+    },
+    {
+      "section_name": "",
+      "section_slug": "homepage-st",
+      "section_enable": "on",
+      "array_type": "inner_list",
+      "loop_number": "1",
+      "inner_list": [
+        {
+          "field_name": "عنوان",
+          "field_slug": "homepage-st-title",
+          "field_help_text": "",
+          "field_default_text": "شراء العقارات",
+          "field_type": "text"
+        }
+      ]
+    },     {
+      "section_name": "التواصل الاجتماعي",
+      "section_slug": "homepage-icons",
+      "section_enable": "on",
+      "array_type": "inner_list",
+      "loop_number": "1",
+      "inner_list": [
+        {
+          "field_name": "facebook",
+          "field_slug": "homepage-header-facebook",
+          "field_help_text": "رابط الصفحة",
+          "field_default_text": "https://www.facebook.com",
+          "field_type": "text"
+        },
+        {
+          "field_name": "instagram",
+          "field_slug": "homepage-header-instagram",
+          "field_help_text": "رابط الحساب",
+          "field_default_text": "https://www.instagram.com",
+          "field_type": "text"
+        },
+        {
+          "field_name": "twitter",
+          "field_slug": "homepage-header-twitter",
+          "field_help_text": "رابط الحساب",
+          "field_default_text": "https://www.twitter.com/",
+          "field_type": "text"
+        },
+        {
+          "field_name": "whatsapp",
+          "field_slug": "homepage-header-whatsapp",
+          "field_help_text": "الواتساب",
+          "field_default_text": "",
+          "field_type": "text"
+        },
+        {
+          "field_name": "snapchat",
+          "field_slug": "homepage-header-email",
+          "field_help_text": "snapchat",
+          "field_default_text": "https://www.snapchat.com",
+          "field_type": "text"
+        }
+        ,
+        {
+          "field_name": "tiktok",
+          "field_slug": "homepage-header-email",
+          "field_help_text": "tiktok",
+          "field_default_text": "https://tiktok.com",
+          "field_type": "text"
+        }
+        ,
+        {
+          "field_name": "الايمايل",
+          "field_slug": "homepage-header-email",
+          "field_help_text": "البريد الالكتروني",
+          "field_default_text": "",
+          "field_type": "text"
+        }
+      ]
+    }
+  ]
