@@ -23,6 +23,7 @@ use App\Http\Controllers\SettingsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+ 
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::post('/estatefilter', [IndexController::class, 'estatefilter'])->name('estatefilter');
@@ -50,8 +51,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/delete/{name}', [Dashboard::class, 'delete'])->name('super.delete');
     Route::post('/loginStore/{name}', [Dashboard::class, 'loginStore'])->name('super.loginStore');
     Route::get('/pay/{name}', [Dashboard::class, 'pay'])->name('bay.profile');
-    Route::post('/pay/{name}/subs', [Dashboard::class, 'subs'])->name(name: 'super.subs');
-    Route::post('/pay/{name}/aftt', [Dashboard::class, 'aftt'])->name(name: 'super.aftt');
+    Route::post('/pay/{name}/subs', [Dashboard::class, 'subs'])->name(  'super.subs');
+    Route::post('/pay/{name}/aftt', [Dashboard::class, 'aftt'])->name(  'super.aftt');
 
     Route::get('/estate', [EstateController::class, 'index'])->name('estate.index');
     Route::get('/create', [EstateController::class, 'create'])->name('estate.create');

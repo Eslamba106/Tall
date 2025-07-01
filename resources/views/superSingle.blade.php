@@ -50,9 +50,9 @@
                         </div>
                         <div class="subs-data">
                             @php
-                                $subs = App\Models\Subscription::find($user->subscription)->first();
+                                $subs = App\Models\Subscription::find($user->subscription);
                             @endphp
-                            {{$subs->name}}
+                            {{$subs->name ?? ""}}
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 subs-info">

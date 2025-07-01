@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 class IndexController extends Controller
 {
     public function estatefilter(Request $request) {
+        
         $estates = Estate::latest();
         if ($request->theme && $request->theme == 'theme2') {
             if ($request->type != 0) {
@@ -48,8 +49,10 @@ class IndexController extends Controller
         return view('homeFilter',compact('estates'))->render();
     }
     public function index(Request $request) {
+        
             $tenant = Tenants::getTenant();
         if (!empty($tenant)) {
+          
             $estateType = EstateType::latest()->where('active',1)->get();
             $estateModel = null;
             $types = null;
@@ -66,6 +69,7 @@ class IndexController extends Controller
             VisitorCounter($request,0);
             return getView('home', compact('estateType','estateAll','estateSell','estateRent','estatStatet','estateModel','types'));
         }else{
+               
             return view('landingpage');
         }
     }

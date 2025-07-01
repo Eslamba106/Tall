@@ -10,5 +10,13 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{asset('assets/css/dashboard.css')}}" rel="stylesheet" />
     <link href='{{asset('uploads/esooq.ico')}}' rel='icon' type='image/x-icon'/>
+    <style>
+       
+        .nav-tabs .nav-link.main_active {
+            color: #32a466 !important;
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     @stack('css-page')
 </head>

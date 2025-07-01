@@ -350,7 +350,7 @@ a.btn.btn-login.btn-regs {
         </div>
     </header>
 
-
+{{-- {{dd( asset('uploads/bg1.png') )}} --}}
     <div class="main-slider">
         <div class="container">
             <div class="main-slider-element">
@@ -390,6 +390,7 @@ a.btn.btn-login.btn-regs {
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-left">
                     <div class="images-left">
                         <div class="img-element">

@@ -56,7 +56,7 @@
              </span>
             @endif
         </td>
-        <td>{{$Subscription->name}}</td>
+        <td>{{$Subscription->name ?? ""}}</td>
         <td>{{ date('d-m-Y', strtotime($subs->created_at)) }}</td>
         <td>
             <a href="{{route('super.single',$tenantStor->name)}}" class="editer">المتجر</a>
