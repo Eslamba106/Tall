@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 });
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard.index');
+    Route::get('/dash', [Dashboard::class, 'user_dashboard'])->name('user.dashboard');
     Route::get('/stores', [Dashboard::class, 'stores'])->name('dashboard.stores');
     Route::get('/store/{name}', [Dashboard::class, 'single'])->name('super.single');
     Route::post('/delete/{name}', [Dashboard::class, 'delete'])->name('super.delete');

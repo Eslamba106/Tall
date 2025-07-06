@@ -188,7 +188,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     'Tenants' => Tenants::class,
-    'Excel' => Maatwebsite\Excel\Facades\Excel::class
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
     ])->toArray(),
 
 ];

@@ -21,8 +21,7 @@
 
     .theme-option:hover,
     .theme-option input:checked+label {
-        border: 2px solid #4F46E5;
-        /* اللون الأزرق عند التحديد */
+        border: 2px solid #4F46E5; 
     }
 
     .theme-option input {

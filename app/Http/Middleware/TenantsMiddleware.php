@@ -22,25 +22,25 @@ class TenantsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $host = $request->getHost();
-        // dd($host , env('APP_URL'));
-        if ($host == env('HOST_URL')) {
-            return $next($request);
-        }
+        // $host = $request->getHost();
+        // // dd($host , env('APP_URL'));
+        // if ($host == env('HOST_URL')) {
+        //     return $next($request);
+        // }
 
-        $cacheKey = 'tenant_' . $host;
-        $tenant = Cache::rememberForever($cacheKey, function () use ($host) {
-            return Tenant::where('domain',$host)->orWhere('domains',$host)->first();
-        });
+        // $cacheKey = 'tenant_' . $host;
+        // $tenant = Cache::rememberForever($cacheKey, function () use ($host) {
+        //     return Tenant::where('domain',$host)->orWhere('domains',$host)->first();
+        // });
         
-        if (!empty($tenant)) {
+        // if (!empty($tenant)) {
 
-            // Switch landlord to Tenant
-            Tenants::switchTenant($tenant);
+        //     // Switch landlord to Tenant
+        //     Tenants::switchTenant($tenant);
 
-        }else{
-            abort(404);
-        }
+        // }else{
+        //     abort(500);
+        // }
         return $next($request);
     }
 }

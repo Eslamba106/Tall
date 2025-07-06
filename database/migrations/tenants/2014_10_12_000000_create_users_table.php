@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('subscriptionAds')->default(0);
             $table->integer('subscriptionOrders')->default(0);
             $table->string('subscriptionPeriod')->default(0);
+            $table->string('super')->nullable();
+            $table->string('admin')->nullable();
             $table->string('duration')->nullable();
             $table->string('type')->default(1);
             $table->timestamp('email_verified_at')->nullable();

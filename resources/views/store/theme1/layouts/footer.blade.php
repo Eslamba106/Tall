@@ -1,5 +1,5 @@
 @php
-    $getTheme = getThemeSetting();
+    $getTheme = getMainThemeSetting();
 @endphp
 <div class="footer">
     <div class="container">
@@ -14,7 +14,7 @@
       <div class="content-footer-bottom">
           <div class="copyright">{{getSetting('global_copyright')}}  </div>
             <div class="top-main-icons">
-                @if ($getTheme[3]->inner_list[3]->field_default_text != '')
+                @if (is_array($getTheme) && $getTheme[3]->inner_list[3]->field_default_text != '')
                 <div class="social wattsp">
                     <a class="social-item txter" rel="nofollow" target="_blank" href="tel:{{ $getTheme[3]->inner_list[3]->field_default_text }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
@@ -29,7 +29,7 @@
                           </svg><span class="ftty">واتســـاب</span></a>
                 </div>
             @endif
-            @if ($getTheme[3]->inner_list[3]->field_default_text != '')
+            @if (is_array($getTheme) && $getTheme[3]->inner_list[3]->field_default_text != '')
             <div class="social wattsp">
                 <a class="social-item txter" rel="nofollow" target="_blank" href="tel:{{ $getTheme[3]->inner_list[3]->field_default_text }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -38,7 +38,7 @@
                       </svg><span class="ftty">جــوال</span></a>
             </div>
         @endif
-        @if ($getTheme[3]->inner_list[6]->field_default_text != '')
+        @if (is_array($getTheme) && $getTheme[3]->inner_list[6]->field_default_text != '')
         <div class="social s6">
             <a class="social-item txter" rel="nofollow" target="_blank" href="mailto:{{ $getTheme[3]->inner_list[6]->field_default_text }}"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <g opacity="0.8">
@@ -52,7 +52,7 @@
         </div>
     @endif
             </div>
-          @if (isset($getTheme[3]))
+          @if (is_array($getTheme) &&isset($getTheme[3]))
           <div class="icons d-flex justify-content-center wrap">
               @if ($getTheme[3]->inner_list[0]->field_default_text != '')
                   <div class="social fb">

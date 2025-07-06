@@ -43,35 +43,35 @@ if (!function_exists('getSetting')) {
     }
 }
 
-if (!function_exists('getThemeSetting')) {
-    function getThemeSetting($default = null)
-    {
-        try {
-            $activeTheme = getSetting('theme');
-            if (!$activeTheme) {
-                $activeTheme = 'theme1';
-            }
-            $tenant = Tenants::getTenant();
-            $cacheKey = "theme_settings_:{$tenant}";
+// if (!function_exists('getThemeSetting')) {
+//     function getThemeSetting($default = null)
+//     {
+//         try {
+//             $activeTheme = getSetting('theme');
+//             if (!$activeTheme) {
+//                 $activeTheme = 'theme1';
+//             }
+//             $tenant = Tenants::getTenant();
+//             $cacheKey = "theme_settings_:{$tenant}";
 
-            if (Cache::has($cacheKey)) {
-                return Cache::get($cacheKey);
-            }
-            $settings = ThemeSettings::where('theme', $activeTheme)->first();
+//             if (Cache::has($cacheKey)) {
+//                 return Cache::get($cacheKey);
+//             }
+//             $settings = ThemeSettings::where('theme', $activeTheme)->first();
 
-            if ($settings && $settings->value !== null) {
-                $decodedSettings = json_decode($settings->value);
-                // Cache the settings for future use
-                Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
-                return $decodedSettings;
-            } else {
-                return $default;
-            }
-        } catch (\Throwable $th) {
-            return $default;
-        }
-    }
-}
+//             if ($settings && $settings->value !== null) {
+//                 $decodedSettings = json_decode($settings->value);
+//                 // Cache the settings for future use
+//                 Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
+//                 return $decodedSettings;
+//             } else {
+//                 return $default;
+//             }
+//         } catch (\Throwable $th) {
+//             return $default;
+//         }
+//     }
+// }
 
 if (!function_exists('getView')) {
     # get view of theme

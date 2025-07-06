@@ -6,24 +6,27 @@
 @push('css-page')
     <link rel="stylesheet" href="{{ asset('assets/css/choices.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 @endpush
 @section('content')
     @php
-        $getTheme = getThemeSetting();
+        $getTheme = getMainThemeSetting();
+        // dd($getTheme);
     @endphp
     <div class="full-h">
         <div class="content-fit-l"></div>
 
         @include('store.theme1.header')
 
-        @if ($getTheme[0]->section_enable == 'on')
+        @if (is_array($getTheme) && $getTheme[0]->section_enable == 'on')
             <div class="container-fluid">
                 <div dir="ltr" class="swiper sw-single" dir="rtl">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <section class="flat-slider"
                                 style="
-        background-image: url({{ './uploads' . $getTheme[0]->homepage_header_bg_image[0]->field_prev_text }});
+        background-image: url({{ main_path().'./uploads' . $getTheme[0]->homepage_header_bg_image[0]->field_prev_text }});
     ">
                                 <div class="overlay"></div>
                             </section>
@@ -31,7 +34,7 @@
                         <div class="swiper-slide">
                             <section class="flat-slider"
                                 style="
-        background-image: url({{ './uploads' . $getTheme[0]->homepage_header_bg_image2[0]->field_prev_text }});
+        background-image: url({{ main_path().'./uploads' . $getTheme[0]->homepage_header_bg_image2[0]->field_prev_text }});
     ">
                                 <div class="overlay"></div>
                             </section>
@@ -39,7 +42,7 @@
                         <div class="swiper-slide">
                             <section class="flat-slider"
                                 style="
-        background-image: url({{ './uploads' . $getTheme[0]->homepage_header_bg_image3[0]->field_prev_text }});
+        background-image: url({{ main_path().'./uploads' . $getTheme[0]->homepage_header_bg_image3[0]->field_prev_text }});
     ">
                                 <div class="overlay"></div>
                             </section>
@@ -62,7 +65,7 @@
 
             </div>
         @endif
-        @if ($getTheme[1]->section_enable == 'on')
+        @if (is_array($getTheme) && $getTheme[1]->section_enable == 'on')
             <div class="  part-head0">
                 <div class="container-fluid">
                     <div class=" part-head1">
@@ -370,7 +373,7 @@
                                         <option value="10">حائل({{ $number }})</option>
                                     @endif
 
-                                @if (in_array('11', $estatStatet))
+                                    @if (in_array('11', $estatStatet))
                                         @php
                                             $number = App\Models\Estate::where('state', 11)->count();
                                         @endphp
@@ -1070,4 +1073,26 @@
             },
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".sw-single", {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+</script>
+
 @endpush

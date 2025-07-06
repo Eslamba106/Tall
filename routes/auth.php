@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use Illuminate\Http\Request;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'create'])
@@ -24,6 +25,7 @@ Route::middleware('guest')->group(function () {
 
     Route::get('login', [AuthController::class, 'login_page'])
                 ->name('login_page');
+
 
     Route::post('login', [AuthController::class, 'login'])
                 ->name('login');
@@ -42,6 +44,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+        Route::get('logout',  [AuthController::class , 'logout'])->name('logout');
     // Route::get('verify-email', EmailVerificationPromptController::class)
     //             ->name('verification.notice');
 

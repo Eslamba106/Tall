@@ -164,7 +164,7 @@
                 </li>
                 <li class="nav-item">
                     @php
-                        $theme = getSetting('theme');
+                        $theme = getTheme(request());
                     @endphp
                     <a class="nav-link" href="{{route('themeUpdate',$theme)}}">
                         <div
@@ -203,7 +203,12 @@
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link logout" href="gologout">
+                    <a class="nav-link  " href="{{ route('logout') }}">
+                        
+                     
+                    <span class="nav-link-text ms-1">تسجيل الخروج</span> 
+                </a>
+                    {{-- <a class="nav-link logout" href="gologout">
                         <form class="form-logout " style="display: none" action="{{route('logout')}}" method="post">
                             @csrf
                         </form>
@@ -216,7 +221,7 @@
                             </svg>
                     </div>
                     <span class="nav-link-text ms-1">تسجيل الخروج</span>
-                </a>
+                </a> --}}
             </li>
         </ul>
     </div>
@@ -224,11 +229,6 @@
         </div>
 </aside>
 <script>
-const logoutButton = document.querySelector('.logout');
-logoutButton.addEventListener('click', function(es) {
-  es.preventDefault(); // منع السلوك الافتراضي للرابط
-  const logoutForm = document.querySelector('.form-logout');
-  logoutForm.submit();
-});
+ 
     </script>
     

@@ -42,79 +42,42 @@ class CreateStoreDatebase
         }
  
 
-        // $this->copyDataToTenantDB($db, $store);
+        $this->copyDataToTenantDB($db, $store);
     }
 
-    // private function copyDataToTenantDB(string $db, $company)
-    // {
-    //     DB::purge('tenant');
-    //     Config::set('database.connections.tenant.database', $db);
-    //     DB::reconnect('tenant');
+    private function copyDataToTenantDB(string $db, $company)
+    {
+        // DB::purge('tenant');
+        // Config::set('database.connections.tenant.database', $db);
+        // DB::reconnect('tenant');
+ 
 
-    //     $tablesToCopy = ['roles', 'sections', 'permissions', 'regions', 'business_settings'
-    //         , 'countries', 'country_masters', 'ownerships', 'property_types',
-    //         // 'blocks', 'floors', 'unit_descriptions',
-    //         // 'unit_types', 'unit_conditions', 'unit_parkings', //'groups','main_ledgers','invoice_settings' ,
-    //         'views', 'business_activities', 'live_withs',
-    //         'enquiry_statuses', 'enquiry_request_statuses',
-    //         //  'units',
-    //         //  'property_management','block_management', 'floor_management','unit_management',
-    //         'departments', 'employee_types', 'employees', 'agents', 'complaint_categories',
-    //         'maintenance_types', 'warranty_types', 'receipt_settings', 'service_masters', 'company_settings', 'admins'];
-    //     foreach ($tablesToCopy as $table) {
-    //         $data = DB::table($table)->get();
-    //         if ($data->isNotEmpty()) {
-    //             DB::connection('tenant')->table($table)->insert($data->map(function ($row) {
-    //                 return (array) $row;
-    //             })->toArray());
-    //         }
-    //     }
+      
+        
+       
+        // DB::purge('mysql');
+  $latestUser = DB::table('users')->orderBy('id', 'desc')->first();
 
-    //     $groupsData = DB::connection('mysql')->table('groups')
-    //         ->whereNull('property_id')
-    //         ->get();
+        if ($latestUser) {
+            DB::connection("tenant")->table('users')->insert((array) $latestUser);
+        }
+  $latestStore = DB::table('stores')->orderBy('id', 'desc')->first();
 
-    //     if ($groupsData->isNotEmpty()) {
-    //         DB::connection('tenant')->table('groups')->insert($groupsData->map(fn($row) => (array) $row)->toArray());
-    //     }
+        if ($latestStore) {
+            DB::connection("tenant")->table('stores')->insert((array) $latestStore);
+        }
+        // Config::set('database.connections.mysql.database', 'talatala');
+        // DB::reconnect('mysql');
+        // $last_user = DB::connection('mysql')->table('users')->orderBy('id', 'desc')->first();
+        // if ($last_user) {
+        //     DB::connection("tenant")->table('users')->insert((array) $last_user);
+        // }
+        // Config::set('database.connections.mysql.database', 'talatala');
+        // DB::reconnect('mysql');
+        // $latestStore= DB::connection('mysql')->table('store')->orderBy('id', 'desc')->first();
+        // if ($latestStore) {
+        //     DB::connection("tenant")->table('stores')->insert((array) $latestStore);
+        // }
 
-    //     $copiedGroupIds = $groupsData->pluck('id')->toArray();
-
-    //     $ledgersData = DB::connection('mysql')->table('main_ledgers')
-    //         ->whereIn('group_id', $copiedGroupIds)
-    //         ->get();
-
-    //     if ($ledgersData->isNotEmpty()) {
-    //         DB::connection('tenant')->table('main_ledgers')->insert($ledgersData->map(fn($row) => (array) $row)->toArray());
-    //     }
-
-    //     $latestUser = DB::table('users')->orderBy('id', 'desc')->first();
-
-    //     if ($latestUser) {
-    //         DB::connection("tenant")->table('users')->insert((array) $latestUser);
-    //     }
-
-    //     $latestCompany = DB::table('companies')->orderBy('id', 'desc')->first();
-    //     if ($latestCompany) {
-    //         DB::connection("tenant")->table('companies')->insert((array) $latestCompany);
-    //     }
-    //     $branch = [
-    //         'name'             => 'Main Branch',
-    //         'logo'             => $company->logo,
-    //         'domain'           => $company->domain,
-    //         'address'          => $company->address1,
-    //         'database_options' => $company->database_options1,
-    //     ];
-    //     DB::connection("tenant")->table('branches')->insert((array) $branch);
-    //     DB::purge('tenant');
-    //     DB::purge('tenant');
-
-    //     Config::set('database.connections.tenant.database', 'finexerp_95');
-    //     DB::reconnect('tenant');
-    //     $latestCompany = DB::connection('mysql')->table('users')->orderBy('id', 'desc')->first();
-    //     if ($latestCompany) {
-    //         DB::connection("tenant")->table('users')->insert((array) $latestCompany);
-    //     }
-
-    // }
+    }
 }

@@ -12,31 +12,31 @@
     font-family: 'Lama Sans';
     font-style: normal;
     font-weight: 400;
-    src: url('/assets/fonts/LamaSans-Regular.woff') format('woff');
+    src: url({{ main_path().'/assets/fonts/LamaSans-Regular.woff' }}) format('woff');
     }
 @font-face {
     font-family: 'Lama Sans';
     font-style: normal;
     font-weight: 500;
-    src: url('/assets/fonts/LamaSans-Regular.woff') format('woff');
+    src: url({{ main_path(). '/assets/fonts/LamaSans-Regular.woff'}}) format('woff');
     }
     @font-face {
     font-family: 'Lama Sans';
     font-style: normal;
     font-weight: 700; /* أو 'bold' */
-    src: url('/assets/fonts/LamaSans-Bold.woff') format('woff');
+    src: url({{ main_path().'/assets/fonts/LamaSans-Bold.woff' }}) format('woff');
 }
 @font-face {
     font-family: 'Lama Sans';
     font-style: normal;
     font-weight: 800; /* أو 'bold' */
-    src: url('/assets/fonts/LamaSans-Black.woff') format('woff');
+    src: url({{ main_path(). '/assets/fonts/LamaSans-Black.woff'}}) format('woff');
 }
 @font-face {
     font-family: 'Lama Sans';
     font-style: normal;
     font-weight: 900;
-    src: url('/assets/fonts/LamaSans-ExtraBold.woff') format('woff');
+    src: url({{ main_path().'/assets/fonts/LamaSans-ExtraBold.woff' }}) format('woff');
 }
     </style>
     <!-- CSS Files -->

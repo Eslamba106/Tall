@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function requests() {
         $types = EstateType::latest()->get();
 
-        return getView('customDeal', compact('types'));
+        return get_theme_view('customDeal', compact('types'));
 
     }
 

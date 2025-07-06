@@ -83,12 +83,12 @@
 @endpush
 @section('content')
     @php
-        $getTheme = getThemeSetting();
+        $getTheme = getMainThemeSetting();
     @endphp
     <div class="full-h">
 
         @include('store.theme2.header')
-        @if ($getTheme[0]->section_enable == 'on')
+        @if (is_array($getTheme) && $getTheme[0]->section_enable == 'on')
             <div class="container-fluid">
                 <div dir="ltr" class="swiper sw-single" dir="rtl">
                     <div class="swiper-wrapper">
@@ -122,7 +122,7 @@
 
             </div>
         @endif
-        @if ($getTheme[1]->section_enable == 'on')
+        @if (is_array($getTheme) && $getTheme[1]->section_enable == 'on')
             <div class="  part-head0">
                 <div class="container">
                     <div class=" part-head1">

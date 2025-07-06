@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Password;
 
@@ -35,8 +36,8 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        try {
+        // DB::beginTransaction();
+        // try {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
@@ -61,15 +62,14 @@ class AuthController extends Controller
             Auth::login($user);
             DB::commit();
             return redirect(RouteServiceProvider::HOME);
-        } catch (Exception $e) {
-            DB::rollBack();
-            return back()->with('error', $e->getMessage());
-        }
+        // } catch (Exception $e) {
+        //     DB::rollBack();
+        //     return back()->with('error', $e->getMessage());
+        // }
     }
     public function add_store(Request $request)
     {
-                // dd($request->all());
-
+ 
         DB::beginTransaction();
         try {
             $request->validate([
@@ -78,7 +78,7 @@ class AuthController extends Controller
                 'password' => ['required', 'confirmed' ],
             ]);
 
-            $user = User::create([
+            $user = (new User())->setConnection('mysql')->create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'username' => $request->user_name,
@@ -86,7 +86,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             $slug = $request->name . '_' . rand(1, 10000);
-            $store = Store::create([
+            $store = (new Store())->setConnection('mysql')->create([
                 'name' => $request->name,
                 'tenant_id' => $user->id, // Assuming tenant_id is the user ID
                 'status' => 'active', // Default status
@@ -108,16 +108,29 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
         ]);
-
-        if (Auth::attempt($request->only('email', 'password'))) {
+        Config::set('database.connections.mysql.database', 'talatala');
+        DB::purge('mysql');
+        DB::reconnect('mysql');
+        DB::setDefaultConnection('mysql'); 
+        $databaseName = DB::connection()->getDatabaseName();
+        // dd($databaseName);
+        if (Auth::attempt($request->only('email', 'password'))) { 
             return redirect()->intended(RouteServiceProvider::HOME);
         }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    public function logout()
+    { 
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect()->route('index');
+    }
+
 }
