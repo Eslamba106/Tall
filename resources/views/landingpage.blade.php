@@ -334,7 +334,7 @@ a.btn.btn-login.btn-regs {
                                 </g>
                                 </g>
                                 </svg></a>
-                            <a href="{{route('login')}}" class="btn btn-login">أنشئ موقعك الان <span class="login-mt"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <a href="{{route('login_page')}}" class="btn btn-login">أنشئ موقعك الان <span class="login-mt"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <g id="Frame">
                                 <g id="SVGRepo_iconCarrier">
                                 <path id="Vector" d="M3.16178 10.0243C3.60943 7.78608 3.83324 6.66697 4.5728 5.94619C4.70949 5.81297 4.85737 5.69175 5.0148 5.58384C5.86662 5 7.00788 5 9.29042 5H10.7095C12.9921 5 14.1333 5 14.9852 5.58384C15.1426 5.69175 15.2904 5.81297 15.4272 5.94619C16.1667 6.66697 16.3905 7.78608 16.8382 10.0243C17.4808 13.2376 17.8022 14.8443 17.0624 15.9827C16.9285 16.1889 16.7722 16.3796 16.5963 16.5513C15.625 17.5 13.9865 17.5 10.7095 17.5H9.29042C6.01343 17.5 4.37495 17.5 3.40364 16.5513C3.22777 16.3796 3.07143 16.1889 2.9375 15.9827C2.19778 14.8443 2.51912 13.2376 3.16178 10.0243Z" stroke="#009877" stroke-width="1.5"/>
@@ -342,7 +342,7 @@ a.btn.btn-login.btn-regs {
                                 <path id="Vector_3" d="M7.64233 12.5C7.98553 13.471 8.91158 14.1667 10.0001 14.1667C11.0886 14.1667 12.0147 13.471 12.3578 12.5" stroke="#009877" stroke-width="1.5" stroke-linecap="round"/>
                                 </g>
                                 </g>
-                                </svg></span></a>
+                                </svg></span></a>  
                         </div>
                     </div>
                 </div>

@@ -72,8 +72,8 @@ class Dashboard extends Controller
             return view('index',compact('tenant','tenantStor','user','affilate','subscription'));
         }else{
             $tenant = Tenant::where('user_id',$user->id)->first();
-            $tenantStor = TenantStor::where('user_id',$user->id)->first();
-            $link = 'https://'. $tenantStor->name . '.'. env('HOST_URL').'/autoLoginBase/'.encrypt($tenant->domain);
+            $tenantStor = Store::where('tenant_id',$user->id)->first();
+            $link = 'http://localhost/'. $tenantStor->domains . '.tala' ;
             // Auth::guard('web')->logout();
 
             // $request->session()->invalidate();
