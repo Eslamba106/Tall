@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\singleSubscription;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class EstateController extends Controller
 {

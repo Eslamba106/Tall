@@ -80,7 +80,9 @@ class Dashboard extends Controller
             if (! is_null($tenantStor)) {
 
                 $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash'; 
-                return redirect()->to($link);
+                  $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)).'/tall/admin/dash';
+                // dd($newDomain );
+                return redirect()->to($newDomain);
             }
             // Auth::guard('web')->logout();
 
