@@ -25,17 +25,17 @@
 @else
     <div class="col-lg-4 col-sm-12">
         <label>الماركة:</label>
-        <select value="{{ old('estate') }}" class="form-control" data-trigger name="estate"
-            id="choices-multiple-estate" required>
+        <select value="{{ old('estate') }}" onchange="select_models(this)" class="form-control" data-trigger
+            name="estate" id="choices-multiple-estate" required>
             <option value="">الماركة</option>
             @foreach ($types as $type)
-                <option value="{{ $type->name }}">{{ $type->name }}</option>
+                <option value="{{ $type->id }}">{{ $type->name ?? $type->name_ar }}</option>
             @endforeach
         </select>
     </div>
     <div class="col-lg-4 col-sm-12">
         <label>نوع السيارة :</label>
-        <select value="{{ old('type') }}" class="form-control" data-trigger name="type" id="choices-type" required
+        <select value="{{ old('type') }}" class="form-control"   name="type"   required
             style="padding: 0.7375rem 0.875rem;">
             <option value="" selected>نوع السيارة</option>
         </select>
@@ -48,3 +48,34 @@
             type="number" name="model" id="model" placeholder="موديل السيارة ...">
     </div>
 @endif
+
+<script>
+function select_models(element) {
+    var id = element.value;
+
+    $.ajax({
+        url: "{{ route('ads.get_models', ':id') }}".replace(':id', id),
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var unitTypeSelect = $("select[name='type']");
+            unitTypeSelect.empty();
+            unitTypeSelect.append('<option value="">نوع السيارة</option>'); 
+            if (data && Array.isArray(data.models) && data.models.length > 0) {
+                data.models.forEach(function(model) {
+                    console.log(model.name_ar);
+                    unitTypeSelect.append(
+                        `<option value="${model.id}">${model.name_ar}</option>`
+                    );
+                });
+            } else {
+                console.warn("لم يتم العثور على بيانات models بالشكل المتوقع", data);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching models:', error);
+        }
+    });
+}
+
+</script>

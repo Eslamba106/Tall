@@ -1,11 +1,57 @@
-
+{{-- @php
+    $cities = [
+    3 => 'الرياض',
+    5 => 'الطائف',
+    6 => 'مكة المكرمة',
+    10 => 'حائل',
+    11 => 'بريدة',
+    13 => 'الدمام',
+    14 => 'المدينة المنورة',
+    15 => 'ابها',
+    17 => 'جازان',
+    18 => 'جدة',
+    24 => 'المجمعة',
+    31 => 'الخبر',
+    80 => 'عنيزة',
+    168 => 'الارطاوية',
+    227 => 'الظهران',
+    243 => 'بقيق',
+    253 => 'صلاصل',
+    270 => 'الزلفي',
+    306 => 'الغاط',
+    377 => 'رابغ',
+    443 => 'ثادق',
+    444 => 'الروبضة / رغبة',
+    796 => 'ملهم',
+    828 => 'الدرعية',
+    834 => 'العمارية',
+    990 => 'المزاحمية',
+    1061 => 'الخرج',
+    1801 => 'محايل',
+    2421 => 'الرس',
+    2522 => 'يدمة',
+    3417 => 'نجران',
+    3479 => 'صبيا',
+    3499 => 'ضمد',
+    3525 => 'ابو عريش',
+    3618 => 'البديع والقرفي',
+    3652 => 'احد المسارحة',
+    3677 => 'الاحساء',
+    23695 => 'مدينة الملك عبدالله الاقتصادية',
+];
+ 
+@endphp --}}
     <div class="card-body">
         <h5 class="font-weight-bolder">الموقع:</h5>
         <div class="row">
             <div class="col-sm-12">
                 <label class="mt-2">المدينة</label>
-                <select class="form-control" data-trigger name="state" id="choices-city" required>
-                    <option {{ $estate->state == 3 ? 'selected' : '' }} value="3">الرياض</option>
+                <select class="form-control" onchange="select_district(this)" data-trigger name="state" id="choices-city" required>
+                    <option value="" >اختر المدينة</option>
+                    @foreach($cities as $id => $city)
+        <option value="{{ $city->id }}" >{{ $city->name_ar }}</option>
+    @endforeach
+                    {{-- <option {{ $estate->state == 3 ? 'selected' : '' }} value="3">الرياض</option>
                     <option {{ $estate->state == 5 ? 'selected' : '' }} value="5">الطائف</option>
                     <option {{ $estate->state == 6 ? 'selected' : '' }} value="6">مكة المكرمة
                     </option>
@@ -51,7 +97,7 @@
                     </option>
                     <option {{ $estate->state == 3677 ? 'selected' : '' }} value="3677">الاحساء</option>
                     <option {{ $estate->state == 23695 ? 'selected' : '' }} value="23695">مدينة الملك
-                        عبدالله الاقتصادية</option>
+                        عبدالله الاقتصادية</option> --}}
                 </select>
             </div>
             <div class="col-sm-12">
@@ -70,3 +116,33 @@
 
     </div>
  
+<script>
+function select_district(element) {
+    var id = element.value;
+
+    $.ajax({
+        url: "{{ route('ads.get_districts', ':id') }}".replace(':id', id),
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var unitTypeSelect = $("select[name='city']");
+            unitTypeSelect.empty();
+            unitTypeSelect.append('<option value="">اختر الحي</option>'); 
+            if (data && Array.isArray(data.districts) && data.districts.length > 0) {
+                data.districts.forEach(function(district) {
+                    console.log(district.name_ar);
+                    unitTypeSelect.append(
+                        `<option value="${district.id}">${district.name_ar}</option>`
+                    );
+                });
+            } else {
+                console.warn("لم يتم العثور على بيانات districts بالشكل المتوقع", data);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching districts:', error);
+        }
+    });
+}
+
+</script>

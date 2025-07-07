@@ -57,9 +57,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/tala'),
+    'url' => env('APP_URL', 'http://localhost/tall'),
 
-    'asset_url' => 'http://localhost/tala/public',
+    'asset_url' => 'http://localhost/tall/public',
 
     /*
     |--------------------------------------------------------------------------

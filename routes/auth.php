@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
     //     return "fsg";
     // });
 
-    Route::get('login', [AuthController::class, 'login_page'])
+    Route::get('login_page', [AuthController::class, 'login_page'])
                 ->name('login_page');
 
 

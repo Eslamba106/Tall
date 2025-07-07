@@ -20,13 +20,12 @@ class AuthController extends Controller
 {
      public function create()
     {
-        return view('Auth/Register');
+        return view('auth.register');
         // return Inertia::render('Auth/Register');
     }
      public function login_page()
     {
-        return view('Auth/login');
-        // return Inertia::render('Auth/Register');
+        return view('auth.login'); 
     }
 
     /**
@@ -34,39 +33,7 @@ class AuthController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
-    {
-        // DB::beginTransaction();
-        // try {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-                'password' => ['required', 'confirmed', Password::defaults()],
-            ]);
-
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-            $slug = $request->name . '_' . rand(1, 10000);
-            $store = Store::create([
-                'name' => $request->name,
-                'tenant_id' => $user->id, // Assuming tenant_id is the user ID
-                'status' => 'active', // Default status
-                'domains' => Str::slug($slug, '_'), // Assuming no domains initially
-                // 'database_options' => null, // Assuming no database options initially
-            ]);
-            event(new StoreCreated($user));
-
-            Auth::login($user);
-            DB::commit();
-            return redirect(RouteServiceProvider::HOME);
-        // } catch (Exception $e) {
-        //     DB::rollBack();
-        //     return back()->with('error', $e->getMessage());
-        // }
-    }
+   
     public function add_store(Request $request)
     {
  
@@ -111,7 +78,7 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        Config::set('database.connections.mysql.database', 'talatala');
+        Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
         DB::setDefaultConnection('mysql'); 

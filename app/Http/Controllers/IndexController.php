@@ -73,7 +73,7 @@ class IndexController extends Controller
             VisitorCounter($request, 0);
             return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
         } else {
-                  Config::set('database.connections.mysql.database', 'talatala');
+                  Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
         DB::setDefaultConnection('mysql');

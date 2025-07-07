@@ -58,12 +58,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/estate', [EstateController::class, 'index'])->name('estate.index');
     Route::get('/create', [EstateController::class, 'create'])->name('estate.create');
     Route::get('/edit/{id}', [EstateController::class, 'edit'])->name('estate.edit');
-    Route::post('/store', [EstateController::class, 'store'])->name('estate.store');
+    Route::post('/store', [EstateController::class, 'storeOrUpdate'])->name('estate.store');
     Route::post('/deleteEstate/{id}', [EstateController::class, 'destroy'])->name('estate.destroy');
     Route::post('/status', [EstateController::class, 'status'])->name('estate.status');
     Route::post('/update/{id}', [EstateController::class, 'update'])->name('estate.update');
     Route::post('estate/imgs', [EstateController::class, 'imagesUpload'])->name('estate.imagesUpload');
 
+    // Ads 
+    Route::group(['prefix' => 'ads' ], function () {
+            Route::get('/create', [EstateController::class, 'create'])->name('ads.create');
+            Route::get('/get_models/{id}', [EstateController::class, 'get_models'])->name('ads.get_models');
+            Route::get('/get_districts/{id}', [EstateController::class, 'get_districts'])->name('ads.get_districts');
+    });
     //Deals
     Route::get('/deals', [DealsController::class, 'index'])->name('deals.index');
     Route::post('/deals/change/status', [DealsController::class, 'change'])->name('deals.change');
