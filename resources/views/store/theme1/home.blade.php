@@ -12,7 +12,7 @@
 @section('content')
     @php
         $getTheme = getMainThemeSetting();
-        // dd($getTheme);
+       
     @endphp
     <div class="full-h">
         <div class="content-fit-l"></div>

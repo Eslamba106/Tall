@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\User;
 use App\Models\Store;
 use App\Models\Estate;
@@ -53,7 +54,11 @@ class IndexController extends Controller
     {
 
         $store = Store::getStore($request);
+<<<<<<< HEAD
  	// dd(auth();
+=======
+        
+>>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
 
         if (! empty($store) &&  auth()->check()) {
 
@@ -64,16 +69,24 @@ class IndexController extends Controller
                 $types       = Estate::distinct()->pluck('type');
                 $estateModel = Estate::distinct()->pluck('model');
             }
-
+            $ads = Ads::get();
             $estateAll   = Estate::where('status', 1)->count();
             $estateSell  = Estate::where('status', 1)->where('goal', 'بيع')->count();
             $estateRent  = Estate::where('status', 1)->where('goal', 'ايجار')->count();
             $estatStatet = Estate::where('status', 1)->pluck('state');
 
             VisitorCounter($request, 0);
-            return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+             $store = app('store');
+        if ($store->theme == 'theme1') {
+            // return view('front.themes.theme2.show', compact('ads'));
+            return view('front.themes.theme1.home', compact('ads' ,'estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
         } else {
-                  Config::set('database.connections.mysql.database', 'talatala');
+            // return view('front.themes.theme2.show', compact('ads'));
+            return view('front.themes.theme2.home', compact('ads' ,'estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+        }
+            // return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+        } else {
+                  Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
         DB::setDefaultConnection('mysql');

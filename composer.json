@@ -34,7 +34,11 @@
         },
         "files": [
             "app/Http/Helpers/Constant.php",
-            "app/Http/Helpers/MainHelpers.php"
+            "app/Http/Helpers/MainHelpers.php",
+            "app/Http/Helpers/Helpers.php",
+            "app/Library/Constant.php",
+            "app/Http/Helpers/Theme_Helpers.php"
+
         ]
     },
     "autoload-dev": {

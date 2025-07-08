@@ -57,9 +57,15 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'url' => env('APP_URL', 'https://tall3.com/'),
 
     'asset_url' => 'https://tall3.com',
+=======
+    'url' => env('APP_URL', 'http://localhost/tall3.com'),
+
+    'asset_url' => 'http://localhost/tall3.com/public',
+>>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
 
     /*
     |--------------------------------------------------------------------------
@@ -169,6 +175,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\ResponseServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,

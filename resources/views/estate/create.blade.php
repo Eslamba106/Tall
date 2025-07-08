@@ -76,12 +76,11 @@
             padding-bottom: 7.5px;
             background: #fff;
         }
-
     </style>
 @endpush
 @section('content')
     @php
-        $theme = getSetting('theme');
+        $theme = getTheme(request());
     @endphp
     <div class="loadinder-thumb"></div>
     <div class="loadinder"><span>جار تجهيز الاعلان ...</span></div>
@@ -96,11 +95,11 @@
             </div>
             <div class="col-lg-6 text-right d-flex  justify-content-end align-items-center">
 
-                <button type="button" id="publisher" class="btn bg-gradient-primary mb-0">التالي</button>
+                <button type="submit" id="publisher" class="btn bg-gradient-primary mb-0">التالي</button>
             </div>
         </div>
-       <ul class="nav nav-tabs w-fit-content mb-4">
-            <li class="nav-item">
+        <ul class="nav nav-tabs w-fit-content mb-4">
+            {{-- <li class="nav-item">
                 <a class="nav-link type_link main_active" href="#" id="personal-link">المعلومات الاساسية</a>
             </li>
             <li class="nav-item">
@@ -111,25 +110,53 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link type_link " href="#" id="company-link">نشر الاعلان في المتجر</a>
+            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link type_link main_active" href="#" id="basic_info">المعلومات الاساسية</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link type_link " href="#" id="details">التفاصيل</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link type_link " href="#" id="main_location">الموقع</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link type_link " href="#" id="share_ads">نشر الاعلان في المتجر</a>
             </li>
         </ul>
 
         <div class="row mt-4">
             <div class="col-lg-12 mt-lg-0 mt-4">
                 <div class="card card-diver-main diver-props active">
-                    <div class="card-body">
+                    <div class="card-body" id="main_info">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 mb-3">
                                 <label>العنوان :</label>
                                 <input placeholder="تسمية الاعلان" class="form-control" type="text" name="name"
                                     id="name" value="{{ old('name') }}" required>
                             </div>
+                            @if ($theme == 'theme2')
+
                             @include('estate.includes.basic_info')
+                            @else
+                                <div class="col-lg-4 col-sm-12">
+                                    <label>المنتج العقاري :</label>
+                                    <input class="form-control" type="text" id="estate"  >
+                                </div>
+                                <div class="col-lg-4 col-sm-12">
+                                    <label>نوع العقار :</label>
+                                    <input class="form-control" type="text" name="type" id="type"   >
+                                </div>
+                                <div class="col-lg-4 col-sm-12">
+                                    <label>المعاملة :</label>
+                                    <input class="form-control" type="text" name="goal" id="goal"   >
+                                </div>
+                            @endif
                         </div>
                     </div>
 
                 </div>
-                 {{-- @include('estate.includes.more_details') --}}
+                {{-- @include('estate.includes.more_details') --}}
                 {{-- <div class="card card-diver-main  diver-props active">
             <div class="card-body">
                 <h5 class="font-weight-bolder">الموقع:</h5>
@@ -207,7 +234,22 @@
                 </div>
             </div> --}}
             </div>
-        </div>
+
+            <div class="card card-diver-main diver-props active    d-none" id="more-details">
+                @include('estate.includes.more_details')
+            </div>
+            <div class="card card-diver-main diver-props active d-none" id="location">
+                @include('estate.includes.location')
+            </div>
+
+
+            @php
+                $images = App\Models\ProductImage::get();
+            @endphp
+            <div class="card card-diver-main diver-props active ">
+
+                @include('estate.includes.ads')
+            </div>
         </div>
     </form>
 
@@ -245,7 +287,49 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpHUfhJm-iMzab-nUflkl3YkeLOMqFGfM&libraries=places&callback=initMap&language=ar">
     </script>
+    <script>
+        $('#basic_info').click(function() {
+            $('#location').addClass('d-none');
+            $('#basic_info').addClass('main_active');
+            $('#details').removeClass('main_active');
+            $('#more-details').addClass('d-none');
+            $('#share_ads').removeClass('main_active');
+            $('#main_ads').addClass('d-none');
+            $('#main_info').removeClass('d-none');
 
+        })
+        $('#main_location').click(function() {
+            $('#location').removeClass('d-none');
+            $('#main_location').addClass('main_active');
+            $('#details').removeClass('main_active');
+            $('#more-details').addClass('d-none');
+            $('#share_ads').removeClass('main_active');
+            $('#main_ads').addClass('d-none');
+            $('#basic_info').removeClass('main_active');
+            $('#main_info').addClass('d-none');
+
+        })
+        $('#details').click(function() {
+            $('#more-details').removeClass('d-none');
+            $('#details').addClass('main_active');
+            $('#location').removeClass('main_active');
+            $('#location').addClass('d-none');
+            $('#share_ads').removeClass('main_active');
+            $('#main_ads').addClass('d-none');
+            $('#basic_info').removeClass('main_active');
+            $('#main_info').addClass('d-none');
+        })
+        $('#share_ads').click(function() {
+            $('#main_ads').removeClass('d-none');
+            $('#share_ads').addClass('main_active');
+            $('#details').removeClass('main_active');
+            $('#more-details').addClass('d-none');
+            $('#main_location').removeClass('main_active');
+            $('#location').addClass('d-none');
+            $('#basic_info').removeClass('main_active');
+            $('#main_info').addClass('d-none');
+        })
+    </script>
     <script>
         const type = new Choices($('#choices-type')[0], {
             removeItemButton: true,
@@ -633,26 +717,26 @@
 
 
 
-        $('#choices-multiple-estate').change(function() {
-            const selectedWilayaId = $('#choices-multiple-estate').val();
-            console.log(selectedWilayaId);
+        // $('#choices-multiple-estate').change(function() {
+        //     const selectedWilayaId = $('#choices-multiple-estate').val();
+        //     console.log(selectedWilayaId);
 
-            $.post("{{ route('estate.model') }}", {
-                _token: "{{ csrf_token() }}",
-                state: selectedWilayaId
-            }, function(response) {
-                console.log(response[0]);
+        //     $.post("{{ route('estate.model') }}", {
+        //         _token: "{{ csrf_token() }}",
+        //         state: selectedWilayaId
+        //     }, function(response) {
+        //         console.log(response[0]);
 
-                type.clearStore();
+        //         type.clearStore();
 
-                response[0].forEach(el => {
-                    type.setChoices([{
-                        value: el,
-                        label: el
-                    }], 'value', 'label', false);
-                });
+        //         response[0].forEach(el => {
+        //             type.setChoices([{
+        //                 value: el,
+        //                 label: el
+        //             }], 'value', 'label', false);
+        //         });
 
-            });
-        });
+        //     });
+        // });
     </script>
 @endpush

@@ -9,7 +9,7 @@
 
 @include('store.theme2.layouts.footer')
 
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+{{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/main-theme.js')}}"></script>
 <script>
     $(".homelengo-box .content-top h6").text(function(a,t){return t.substr(0,50) + "..."});
@@ -25,7 +25,7 @@
       $('.header-fixed-cov').toggleClass('active');
       $('.header-fixed').toggleClass('active');
     });
-  </script>
+  </script> --}}
 @stack('js-main')
 </body>
 </html>

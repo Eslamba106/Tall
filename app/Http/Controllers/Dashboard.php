@@ -80,12 +80,24 @@ $parts = explode('.', $host);
         // } else {
 
             $tenant     = Tenant::where('user_id', $user->id)->first();
+<<<<<<< HEAD
             $tenantStor = (new Store())->setConnection('mysql')->where('tenant_id', $user->id)->first();
             // dd($tenantStor);
             if (! is_null($tenantStor)) {
 
                 $link = 'https://' . $tenantStor->domains . '.tall3.com/' . 'admin/dash'; 
                 return redirect()->to($link);
+=======
+            dd($tenant);
+            $tenantStor = Store::where('tenant_id', $user->id)->first();
+            // dd($tenantStor);
+            if (! is_null($tenantStor)) {
+
+                $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash'; 
+                  $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)).'/tall/login_page';
+                // dd($newDomain );
+                return redirect()->to($newDomain);
+>>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
             }
             // Auth::guard('web')->logout();
 

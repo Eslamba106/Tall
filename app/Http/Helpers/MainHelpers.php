@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Store;
+use App\Http\Helpers\Helpers;
 use App\Models\ThemeSettings;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 
 if (!function_exists('getTheme')) {
@@ -36,7 +38,7 @@ if (!function_exists('getMainThemeSetting')) {
             if ($settings && $settings->value !== null) {
                 $decodedSettings = json_decode($settings->value);
                 // Cache the settings for future use
-                Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
+                // Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
                 return $decodedSettings;
             } else {
                 return $default;
@@ -66,3 +68,28 @@ if (!function_exists('get_theme_view')) {
 }
 
 
+if(!function_exists('translate')) {
+    function  translate($key)
+    {
+        $local = Helpers::default_lang();
+        App::setLocale($local);
+
+        try {
+            $lang_array = include(base_path('lang/' . $local . '/messages.php'));
+            $processed_key = ucfirst(str_replace('_', ' ', Helpers::remove_invalid_charcaters($key)));
+            $key = Helpers::remove_invalid_charcaters($key);
+            if (!array_key_exists($key, $lang_array)) {
+                $lang_array[$key] = $processed_key;
+                $str = "<?php return " . var_export($lang_array, true) . ";";
+                file_put_contents(base_path('lang/' . $local . '/messages.php'), $str);
+                $result = $processed_key;
+            } else {
+                $result = __('messages.' . $key);
+            }
+        } catch (\Exception $exception) {
+            $result = __('messages.' . $key);
+        }
+
+        return $result;
+    }
+}

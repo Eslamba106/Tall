@@ -25,8 +25,12 @@ class AuthController extends Controller
     }
      public function login_page()
     {
+<<<<<<< HEAD
         return view('auth.login');
         // return Inertia::render('Auth/Register');
+=======
+        return view('auth.login'); 
+>>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
     }
 
     /**
@@ -34,39 +38,7 @@ class AuthController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
-    {
-        // DB::beginTransaction();
-        // try {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-                'password' => ['required', 'confirmed', Password::defaults()],
-            ]);
-
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-            $slug = $request->name . '_' . rand(1, 10000);
-            $store = Store::create([
-                'name' => $request->name,
-                'tenant_id' => $user->id, // Assuming tenant_id is the user ID
-                'status' => 'active', // Default status
-                'domains' => Str::slug($slug, '_'), // Assuming no domains initially
-                // 'database_options' => null, // Assuming no database options initially
-            ]);
-            event(new StoreCreated($user));
-
-            Auth::login($user);
-            DB::commit();
-            return redirect(RouteServiceProvider::HOME);
-        // } catch (Exception $e) {
-        //     DB::rollBack();
-        //     return back()->with('error', $e->getMessage());
-        // }
-    }
+   
     public function add_store(Request $request)
     {
  
@@ -107,6 +79,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -118,7 +91,8 @@ class AuthController extends Controller
         $databaseName = DB::connection()->getDatabaseName();
         // dd($databaseName);
         if (Auth::attempt($request->only('email', 'password'))) { 
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->route('user.dashboard');
+            // return redirect()->intended(RouteServiceProvider::HOME);
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
