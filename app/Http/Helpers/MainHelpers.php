@@ -38,7 +38,7 @@ if (!function_exists('getMainThemeSetting')) {
             if ($settings && $settings->value !== null) {
                 $decodedSettings = json_decode($settings->value);
                 // Cache the settings for future use
-                Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
+                // Cache::put($cacheKey, $decodedSettings, now()->addMinutes(60));
                 return $decodedSettings;
             } else {
                 return $default;

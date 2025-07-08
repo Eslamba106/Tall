@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('dash.layouts.back-end.app')
 
 @section('title', translate('category'))
 

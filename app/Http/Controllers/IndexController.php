@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\User;
 use App\Models\Store;
 use App\Models\Estate;
@@ -53,7 +54,7 @@ class IndexController extends Controller
     {
 
         $store = Store::getStore($request);
- 
+        
 
         if (! empty($store) &&  auth()->check()) {
 
@@ -64,14 +65,15 @@ class IndexController extends Controller
                 $types       = Estate::distinct()->pluck('type');
                 $estateModel = Estate::distinct()->pluck('model');
             }
-
+            $ads = Ads::get();
             $estateAll   = Estate::where('status', 1)->count();
             $estateSell  = Estate::where('status', 1)->where('goal', 'بيع')->count();
             $estateRent  = Estate::where('status', 1)->where('goal', 'ايجار')->count();
             $estatStatet = Estate::where('status', 1)->pluck('state');
 
             VisitorCounter($request, 0);
-            return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+            return view('front.themes.theme2.home', compact('ads' ,'estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+            // return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
         } else {
                   Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');

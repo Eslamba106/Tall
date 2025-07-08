@@ -1,0 +1,215 @@
+<div id="headerMain" class="d-none">
+    <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container shadow">
+
+        <div class="navbar-nav-wrap">
+            <div class="navbar-brand-wrapper">
+                <!-- Logo -->
+                @php($e_commerce_logo=\App\Models\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value ?? null)
+                <a class="navbar-brand" href=" " aria-label="">
+                    <img class="navbar-brand-logo"
+                         onerror="this.src='{{asset('assets/front-end/img/image-place-holder.png')}}'"
+                         src="{{asset("storage/app/company/$e_commerce_logo")}}" alt="Logo">
+                    <img class="navbar-brand-logo-mini"
+                         onerror="this.src='{{asset('assets/front-end/img/image-place-holder.png')}}'"
+                         src="{{asset("storage/app/company/$e_commerce_logo")}}"
+                         alt="Logo">
+                </a>
+                <!-- End Logo -->
+            </div>
+
+            <div class="navbar-nav-wrap-content-left">
+                <!-- Navbar Vertical Toggle -->
+                <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3 d-xl-none">
+                    <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip"
+                       data-placement="right" title="Collapse"></i>
+                    <i class="tio-last-page navbar-vertical-aside-toggle-full-align"
+                       data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+                       data-toggle="tooltip" data-placement="right" title="Expand"></i>
+                </button>
+            </div>
+
+
+            <!-- Secondary Content -->
+            <div class="navbar-nav-wrap-content-right"
+                 style="{{Session::get('direction') === "rtl" ? 'margin-left:unset; margin-right: auto' : 'margin-right:unset; margin-left: auto'}}">
+                <!-- Navbar -->
+                <ul class="navbar-nav align-items-center flex-row">
+                    <!--<li class="nav-item d-none d-sm-inline-block">
+                            <label class="switcher">
+                                <input class="switcher_input" type="checkbox" checked="checked">
+                                <span class="switcher_control"></span>
+                            </label>
+                        </li>-->
+
+                    {{-- <li class="nav-item d-none d-md-inline-block">
+                        <div class="hs-unfold">
+                            <div>
+                                @php( $local = session()->has('local')?session('local'):'en')
+                                @php($lang = \App\Models\BusinessSetting::where('type', 'language')->first())
+                                <div
+                                    class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
+                                    <a class="topbar-link dropdown-toggle d-flex align-items-center title-color"
+                                       href="#" data-toggle="dropdown">
+                                        @foreach(json_decode($lang['value'],true) as $data)
+                                            @if($data['code']==$local)
+                                                <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                     width="20"
+                                                     src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                     alt="Eng">
+                                                {{$data['name']}}
+                                            @endif
+                                        @endforeach
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach(json_decode($lang['value'],true) as $key =>$data)
+                                            @if($data['status']==1)
+                                                <li>
+                                                    <a class="dropdown-item py-1"
+                                                       href="{{route('lang',[$data['code']])}}">
+                                                        <img
+                                                            class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                            width="20"
+                                                            src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                            alt="{{$data['name']}}"/>
+                                                        <span class="text-capitalize">{{$data['name']}}</span>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li> --}}
+
+                    {{-- <li class="nav-item d-none d-md-inline-block">
+                        <div class="hs-unfold">
+                            <a title="Website home"
+                               class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                               href=" " target="_blank">
+                                <i class="tio-globe"></i>
+                            </a>
+                        </div>
+                    </li> --}}
+
+                    {{-- @if(\App\Http\Helpers\Helpers::module_permission_check('support_section')) --}}
+                        {{-- <li class="nav-item d-none d-md-inline-block">
+                            <!-- Notification -->
+                            <div class="hs-unfold">
+                                <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                                   href="{{route('admin.contact.list')}}">
+                                    <i class="tio-email"></i>
+                                    @php($message=\App\Model\Contact::where('seen',0)->count())
+                                    @if($message!=0)
+                                        <span class="btn-status btn-sm-status btn-status-danger">{{ $message }}</span>
+                                    @endif
+                                </a>
+                            </div>
+                            <!-- End Notification -->
+                        </li> --}}
+                    {{-- @endif --}}
+
+                    {{-- @if(\App\Http\Helpers\Helpers::module_permission_check('order_management')) --}}
+                        {{-- <li class="nav-item d-none d-md-inline-block">
+                            <!-- Notification -->
+                            <div class="hs-unfold">
+                                <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
+                                   href=" ">
+                                    <i class="tio-shopping-cart-outlined"></i>
+                                    <span
+                                        class="btn-status btn-sm-status btn-status-danger">{{\App\Models\MainOrder::where('status','pending')->count()}}</span>
+                                </a>
+                            </div>
+                            <!-- End Notification -->
+                        </li> --}}
+                    {{-- @endif --}}
+
+                    {{-- <li class="nav-item view-web-site-info">
+                        <div class="hs-unfold">
+                            <a onclick="openInfoWeb()" href="javascript:"
+                               class="bg-white js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle">
+                                <i class="tio-info"></i>
+                            </a>
+                        </div>
+                    </li> --}}
+
+          
+                </ul>
+                <!-- End Navbar -->
+            </div>
+            <!-- End Secondary Content -->
+        </div>
+        {{-- <div id="website_info" style="display: none;" class="bg-secondary w-100">
+            <div class="p-3">
+                <div class="bg-white p-1 rounded">
+                    @php( $local = session()->has('local')?session('local'):'en')
+                    @php($lang = \App\Models\BusinessSetting::where('type', 'language')->first())
+                    <div
+                        class="topbar-text dropdown disable-autohide {{Session::get('direction') === "rtl" ? 'ml-3' : 'm-1'}} text-capitalize">
+                        <a class="topbar-link dropdown-toggle title-color d-flex align-items-center" href="#"
+                           data-toggle="dropdown">
+                            @foreach(json_decode($lang['value'],true) as $data)
+                                @if($data['code']==$local)
+                                    <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                         width="20"
+                                         src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                         alt="Eng">
+                                    {{$data['name']}}
+                                @endif
+                            @endforeach
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach(json_decode($lang['value'],true) as $key =>$data)
+                                @if($data['status']==1)
+                                    <li>
+                                        <a class="dropdown-item pb-1"
+                                           href="{{route('lang',[$data['code']])}}">
+                                            <img
+                                                class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                                                width="20"
+                                                src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                                alt="{{$data['name']}}"/>
+                                            <span class="text-capitalize">{{$data['name']}}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-white p-1 rounded mt-2">
+                    <a title="Website home" class="p-2 title-color"
+                       href=" " target="_blank">
+                        <i class="tio-globe"></i> 
+                        {{translate('view_website')}}
+                    </a>
+                </div> --}}
+                {{-- @if(\App\Http\Helpers\Helpers::module_permission_check('support_section')) --}}
+                    {{-- <div class="bg-white p-1 rounded mt-2">
+                        <a class="p-2  title-color"
+                           href="{{route('admin.contact.list')}}">
+                            <i class="tio-email"></i>
+                            {{translate('message')}}
+                            @php($message=\App\Model\Contact::where('seen',0)->count())
+                            @if($message!=0)
+                                <span>({{ $message }})</span>
+                            @endif
+                        </a>
+                    </div> --}}
+                {{-- @endif --}}
+                {{-- @if(\App\Http\Helpers\Helpers::module_permission_check('order_management')) --}}
+                    {{-- <div class="bg-white p-1 rounded mt-2">
+                        <a class="p-2  title-color"
+                           href=" ">
+                            <i class="tio-shopping-cart-outlined"></i>
+                            {{translate('order_list')}}
+                        </a>
+                    </div> --}}
+                {{-- @endif --}}
+            </div>
+        </div>
+    </header>
+</div>
+<div id="headerFluid" class="d-none"></div>
+<div id="headerDouble" class="d-none"></div>
+

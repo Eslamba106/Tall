@@ -38,7 +38,8 @@ class AbstractRepo
         $data['financing'] = $request->input('financing', null); // Optional field
         $data['price_when_call'] = $request->input('price_when_call', null);
         $data['thumbnail']       = $request->input('thumbnail', null);
-        $data['thumbnail']       = $request->input('thumbnail', null);
+        $data['phone']       = $request->input('phone', null);
+        $data['method']       = $request->input('method', null);
          if ($request->hasFile('thumbnail')) {
         $image_name = ImageManager::upload('ads/', 'webp', $request->file('thumbnail'));
         $data['thumbnail'] = json_encode($image_name);

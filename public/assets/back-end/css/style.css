@@ -97,7 +97,7 @@ a:hover {
 }
 
 .navbar-vertical-content {
-    background: #073b74;
+    background: #FFFFFF;
     padding: 10px 15px;
 }
 
@@ -144,7 +144,7 @@ a:hover {
         > .navbar-nav
         > .navbar-vertical-aside-has-menu
         > .nav {
-        background-color: #073b74;
+        background-color: #FFFFFF;
     }
 }
 .cmn--media {
@@ -232,7 +232,7 @@ a:hover {
     }
 }
 .navbar-vertical-aside .nav-link {
-    color: #e9f3ff;
+    color: black;
 }
 
 aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
@@ -5284,7 +5284,7 @@ select {
     position: sticky;
     top: 0;
     z-index: 9;
-    background: #073b74;
+    background: #FFFFFF;
 }
 
 aside .navbar-vertical-content {
