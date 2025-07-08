@@ -44,9 +44,10 @@ class Kernel extends HttpKernel
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+            // \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\SetActiveStore::class,
+            
 
         ],
     ];
@@ -72,5 +73,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'tenants' => \App\Http\Middleware\TenantsMiddleware::class,
         'set_active_store' => \App\Http\Middleware\SetActiveStore::class, 
+        // 'tenant.db' => \App\Http\Middleware\UseTenantConnection::class,
     ];
 }

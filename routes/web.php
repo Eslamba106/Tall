@@ -8,8 +8,10 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EstateController;
 use App\Http\Controllers\MainRegistration;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SettingsController;
 
@@ -117,6 +119,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //Route::post('/shop-active/{id}', [Subscriptions::class, 'active'])->name('shopSetting.active');
     Route::get('/shop-active/{id}', [Subscriptions::class, 'subscribe'])->name('main.subscribe');
 
+    Route::group(['prefix' => 'general-settings' ], function () {
+    Route::get('', [GeneralController::class, 'index'])->name('admin.business-settings.language.index');
+    });
+
 });
 
 // Route::middleware('auth')->group(function () {
@@ -124,5 +130,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
-
+Route::group(['prefix' => 'language' ], function () {
+    Route::get('', [LanguageController::class, 'index'])->name('admin.business-settings.language.index');
+    Route::post('add-new', [LanguageController::class, 'store'])->name('admin.business-settings.language.add-new');
+    Route::get('update-status', [LanguageController::class, 'update_status'])->name('admin.business-settings.language.update-status');
+    Route::get('update-default-status', [LanguageController::class, 'update_default_status'])->name('admin.business-settings.language.update-default-status');
+    Route::post('update', [LanguageController::class, 'update'])->name('admin.business-settings.language.update');
+    Route::get('translate/{lang}', [LanguageController::class, 'translate'])->name('admin.business-settings.language.translate');
+    Route::get('translate-list/{lang}', [LanguageController::class, 'translate_list'])->name('admin.business-settings.language.translate.list');
+    Route::post('translate-submit/{lang}', [LanguageController::class, 'translate_submit'])->name('admin.business-settings.language.translate-submit');
+    Route::post('remove-key/{lang}', [LanguageController::class, 'translate_key_remove'])->name('admin.business-settings.language.remove-key');
+    Route::get('delete/{lang}', [LanguageController::class, 'delete'])->name('admin.business-settings.language.delete');
+    Route::any('auto-translate/{lang}', [LanguageController::class, 'auto_translate'])->name('admin.business-settings.language.auto-translate');
+});
 require __DIR__.'/auth.php';

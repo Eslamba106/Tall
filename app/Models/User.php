@@ -46,4 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function store(){
+        return $this->hasOne(Store::class, 'tenant_id', 'id');
+    }
 }

@@ -1,10 +1,10 @@
 @if ($theme == 'theme1')
     <div class="col-lg-4 col-sm-12">
         <label>المنتج العقاري :</label>
-        <select value="{{ old('estate') }}" class="form-control" data-trigger name="estate" id="choices-multiple-estate"
+        <select value="{{ old('estate') }}" class="form-control" data-trigger name="estate_product_id" id="choices-multiple-estate"
             required>
-            @foreach ($types as $type)
-                <option value="{{ $type->id }}">{{ $type->name }}</option>
+            @foreach ($estate_products as $estate_product)
+                <option value="{{ $estate_product->id }}">{{ $estate_product->name }}</option>
             @endforeach
         </select>
     </div>

@@ -12,6 +12,7 @@ use App\Models\EstateComb;
 use App\Models\EstateType;
 use App\Models\EstateProps;
 use App\Models\EstateGroupe;
+use App\Models\EstateProduct;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Models\singleSubscription;
@@ -46,6 +47,7 @@ class EstateController extends Controller
         }else{
 
             $types = EstateType::latest()->get(); 
+            $estate_products = EstateProduct::latest()->get(); 
         }
         $cities = City::with('districts')->get();
         return view('estate.create', compact('types' , 'cities'));

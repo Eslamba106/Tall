@@ -57,9 +57,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/tall'),
+    'url' => env('APP_URL', 'http://localhost/tall3.com'),
 
-    'asset_url' => 'http://localhost/tall/public',
+    'asset_url' => 'http://localhost/tall3.com/public',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,6 +169,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\ResponseServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
