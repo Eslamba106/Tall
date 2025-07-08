@@ -72,7 +72,14 @@ class IndexController extends Controller
             $estatStatet = Estate::where('status', 1)->pluck('state');
 
             VisitorCounter($request, 0);
+             $store = app('store');
+        if ($store->theme == 'theme1') {
+            // return view('front.themes.theme2.show', compact('ads'));
+            return view('front.themes.theme1.home', compact('ads' ,'estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+        } else {
+            // return view('front.themes.theme2.show', compact('ads'));
             return view('front.themes.theme2.home', compact('ads' ,'estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
+        }
             // return get_theme_view('home', compact('estateType', 'estateAll', 'estateSell', 'estateRent', 'estatStatet', 'estateModel', 'types'));
         } else {
                   Config::set('database.connections.mysql.database', 'tall');
