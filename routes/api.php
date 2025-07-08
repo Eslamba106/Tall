@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\AdsController;
-use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AdsController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,21 +18,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['prefix' => 'auth',    'middleware' => ['guest:sanctum']], function () {
-    Route::post('/login', [AuthController::class,'login'])->name('api.login');
-    Route::post('/register', [AuthController::class,'register'])->name('api.register');
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+    Route::post('/register', [AuthController::class, 'register'])->name('api.register');
 });
-Route::group(['prefix' => 'ads' ], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('api.logout');
+});
+Route::group(['prefix' => 'ads', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/store', [AdsController::class, 'store'])->name('api.ads.store');
-    Route::get('/list', [AdsController::class, 'list'])->name('api.ads.list')->middleware( 'auth:sanctum');
+    Route::get('/list', [AdsController::class, 'list'])->name('api.ads.list');
+    Route::get('/get_cars', [AdsController::class, 'get_cars'])->name('api.ads.get_cars');
+    Route::get('/get_models/{id}', [AdsController::class, 'get_models'])->name('api.ads.get_models');
+    Route::get('/get_cities', [AdsController::class, 'get_cities'])->name('api.ads.get_cities');
+    Route::get('/get_districts/{id}', [AdsController::class, 'get_districts'])->name('api.ads.get_districts');
+    Route::get('/get_estate_product', [AdsController::class, 'get_estate_product'])->name('api.ads.get_estate_product');
+    Route::get('/get_estate_product_type/{id}', [AdsController::class, 'get_estate_product_type'])->name('api.ads.get_estate_product');
+    Route::get('/get_estate_product_transaction/{id}', [AdsController::class, 'get_estate_product_transaction'])->name('api.ads.get_estate_product');
+    Route::get('/delete/{id}', [AdsController::class, 'delete'])->name('api.ads.delete');
+    Route::get('/change-status/{id}', [AdsController::class, 'updateStatus'])->name('api.ads.updateStatus');
 });
-// Route::domain('{slug}.localhost/tall3.com')->group(function () {
-Route::middleware(['tenant.db', 'auth:sanctum'])->get('/check-auth', function (Request $request) {
-    return response()->json([
-        'message' => 'Authenticated',
-        'user' => $request->user()
-    ]);
+Route::group(['prefix' => 'customer', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('/store', [CustomerController::class, 'store'])->name('api.customer.store');
+    Route::get('/list', [CustomerController::class, 'list'])->name('api.customer.list'); 
+    Route::get('/delete/{id}', [CustomerController::class, 'delete'])->name('api.customer.delete');
+    Route::post('/update/{id}', [CustomerController::class, 'update'])->name('api.customer.update');
+    Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('api.customer.get_customer');
+
+});
+Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('/store', [OrderController::class, 'store'])->name('api.order.store');
+    Route::get('/list', [OrderController::class, 'list'])->name('api.order.list'); 
+    Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('api.order.delete');
+    Route::post('/update/{id}', [OrderController::class, 'update'])->name('api.order.update');
+    Route::get('/get_order/{id}', [OrderController::class, 'get_order'])->name('api.order.get_order');
+
 });

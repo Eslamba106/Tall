@@ -74,6 +74,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -85,7 +86,8 @@ class AuthController extends Controller
         $databaseName = DB::connection()->getDatabaseName();
         // dd($databaseName);
         if (Auth::attempt($request->only('email', 'password'))) { 
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->route('user.dashboard');
+            // return redirect()->intended(RouteServiceProvider::HOME);
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

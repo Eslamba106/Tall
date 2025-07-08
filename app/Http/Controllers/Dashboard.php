@@ -75,12 +75,13 @@ class Dashboard extends Controller
         // } else {
 
             $tenant     = Tenant::where('user_id', $user->id)->first();
+            dd($tenant);
             $tenantStor = Store::where('tenant_id', $user->id)->first();
             // dd($tenantStor);
             if (! is_null($tenantStor)) {
 
                 $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash'; 
-                  $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)).'/tall/admin/dash';
+                  $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)).'/tall/login_page';
                 // dd($newDomain );
                 return redirect()->to($newDomain);
             }

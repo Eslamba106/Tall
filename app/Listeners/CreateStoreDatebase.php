@@ -43,7 +43,7 @@ class CreateStoreDatebase
 
     private function copyDataToTenantDB(string $db, $company)
     {
-   $tablesToCopy = ['car_types'];
+   $tablesToCopy = ['car_types' , 'car_models','estate_products', 'estate_product_types','estate_product_transactions' , 'cities' , 'districts'];
         foreach ($tablesToCopy as $table) {
             $data = DB::connection("mysql")->table($table)->get();
             if ($data->isNotEmpty()) {

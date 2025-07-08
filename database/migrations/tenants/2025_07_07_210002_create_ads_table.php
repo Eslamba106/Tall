@@ -33,6 +33,8 @@ return new class extends Migration
             $table->string('price_when_call')->nullable();
             $table->enum('status',['active' ,'inactive'])->default('active');
             $table->text('video_link')->nullable();
+            $table->text('thumbnail')->nullable();
+            $table->text('images')->nullable();
             $table->timestamps();
         });
     }

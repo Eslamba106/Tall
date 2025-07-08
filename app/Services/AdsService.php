@@ -21,4 +21,12 @@ class AdsService extends AbstractService
     {
         return $this->repo->getAll();
     }
+    public function delete_ads($id)
+    {
+        return $this->repo->delete_ads($id);
+    }
+    public function update_ads_status($id)
+    {
+        return $this->repo->update_ads_status($id);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Repo;
 
 use Illuminate\Http\Request;
+use App\Http\Helpers\ImageManager;
 use Illuminate\Pagination\Paginator;
 
 class AbstractRepo
@@ -13,7 +14,8 @@ class AbstractRepo
     {
         $this->model = $model;
     }
- public function store_ads(Request $request){
+    public function store_ads(Request $request)
+    {
         $data = $request->all();
         $data['status'] = 'active'; // Default status
         $data['name'] = $request->input('name'); // Optional field
@@ -34,7 +36,22 @@ class AbstractRepo
         $data['car_motor_status'] = $request->input('car_motor_status', null); // Optional field
         $data['oil'] = $request->input('oil', null); // Optional field
         $data['financing'] = $request->input('financing', null); // Optional field
-        $data['price_when_call'] = $request->input('price_when_call', null);  
+        $data['price_when_call'] = $request->input('price_when_call', null);
+        $data['thumbnail']       = $request->input('thumbnail', null);
+        $data['thumbnail']       = $request->input('thumbnail', null);
+         if ($request->hasFile('thumbnail')) {
+        $image_name = ImageManager::upload('ads/', 'webp', $request->file('thumbnail'));
+        $data['thumbnail'] = json_encode($image_name);
+         }
+        $product_images  = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = ImageManager::upload('ads/', 'webp', $image);
+                $product_images[] = $image_name;
+            }
+        }
+        $data['images']       = json_encode($product_images);
+
         return $this->create($data);
     }
     public function findOrFail($id)
@@ -48,11 +65,11 @@ class AbstractRepo
     }
     public function show($id)
     {
-        return $this->model::where('id' , $id)->first();
+        return $this->model::where('id', $id)->first();
     }
-    public function getAllWith($key , $value)
+    public function getAllWith($key, $value)
     {
-        return $this->model::where($key , $value)->paginate(6);
+        return $this->model::where($key, $value)->paginate(6);
     }
 
     public function getPaginate($paginate = 10)
@@ -62,9 +79,9 @@ class AbstractRepo
 
 
 
-    public function getAllOrderBy($column,$sort)
+    public function getAllOrderBy($column, $sort)
     {
-        return $this->model::orderBy($column,$sort)->get();
+        return $this->model::orderBy($column, $sort)->get();
     }
 
     public function findWhere($column, $value)
@@ -72,14 +89,14 @@ class AbstractRepo
         return $this->model::where($column, $value)->get();
     }
 
-    public function findWhereIn($column,Array $values)
+    public function findWhereIn($column, array $values)
     {
         return $this->model::whereIn($column, $values)->get();
     }
 
     public function getWhereOperand($column, $operand, $value)
     {
-        return $this->model::where($column,$operand, $value)->get();
+        return $this->model::where($column, $operand, $value)->get();
     }
 
 
@@ -104,11 +121,11 @@ class AbstractRepo
         });
         $this->model = new $this->model;
         if ($input["resource"] == "custom" && is_array($input["resource_columns"]) && count($input["resource_columns"]) > 0) {
-            $this->model = $this->model->select(implode(",",$input["resource_columns"]));
+            $this->model = $this->model->select(implode(",", $input["resource_columns"]));
         }
         if ($input["deleted"] == "deleted") {
             $this->model = $this->model->onlyTrashed();
-        }else  {
+        } else {
             $this->model = $this->model->withTrashed();
         }
         if ($input["with"] != []) {
@@ -129,14 +146,14 @@ class AbstractRepo
             }
         }
         $this->model = $this->model->orderBy($input["field"], $input["sort"]);
-        return $input["paginate"] != "false"? $this->model->paginate($input["limit"]) : $this->model->get();
+        return $input["paginate"] != "false" ? $this->model->paginate($input["limit"]) : $this->model->get();
     }
     public function Meta($data, $input)
     {
-        $pages=[];
-        if($input["paginate"]!= "false"){
-            for($i=1;$i<=$data->lastPage();$i++){
-                $pages[]=$i;
+        $pages = [];
+        if ($input["paginate"] != "false") {
+            for ($i = 1; $i <= $data->lastPage(); $i++) {
+                $pages[] = $i;
             }
         }
         return [
@@ -145,7 +162,6 @@ class AbstractRepo
             'pages' => $pages,
             'lastPage' => $input["paginate"] != "false" ? $data->lastPage() : 1,
         ];
-
     }
     public function bulkDelete(array $ids)
     {
@@ -171,5 +187,5 @@ class AbstractRepo
     }
 
     // ads functions
-   
+
 }

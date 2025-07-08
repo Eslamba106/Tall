@@ -20,26 +20,26 @@ class UseTenantConnection
      */
     public function handle(Request $request, Closure $next): Response
     {
-              $token = $request->bearerToken();
+        //       $token = $request->bearerToken();
 
-        if ($token && Str::contains($token, '|')) {
-            [$id, $plainToken] = explode('|', $token, 2); 
-            $accessToken = \App\Models\PersonalAccessToken::on('tenant')->find($id);
+        // if ($token && Str::contains($token, '|')) {
+        //     [$id, $plainToken] = explode('|', $token, 2); 
+        //     $accessToken = \App\Models\PersonalAccessToken::on('tenant')->find($id);
 
-            if ($accessToken && hash_equals($accessToken->token, hash('sha256', $plainToken))) {
-                $user = $accessToken->tokenable;
+        //     if ($accessToken && hash_equals($accessToken->token, hash('sha256', $plainToken))) {
+        //         $user = $accessToken->tokenable;
 
-                if ($user && $user->store) {
-                    $options = json_decode($user->store->database_options, true);
+        //         if ($user && $user->store) {
+        //             $options = json_decode($user->store->database_options, true);
 
-                    // تغيير إعدادات الاتصال
-                    Config::set('database.connections.tenant.database', $options['dbname']);
-                    DB::purge('tenant');
-                    DB::reconnect('tenant');
-                    DB::setDefaultConnection('tenant');
-                }
-            }
-        }
+        //             // تغيير إعدادات الاتصال
+        //             Config::set('database.connections.tenant.database', $options['dbname']);
+        //             DB::purge('tenant');
+        //             DB::reconnect('tenant');
+        //             DB::setDefaultConnection('tenant');
+        //         }
+        //     }
+        // }
 
 
         return $next($request);

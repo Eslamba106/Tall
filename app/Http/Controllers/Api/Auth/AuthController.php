@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class AuthController extends Controller
 {
@@ -30,8 +32,11 @@ class AuthController extends Controller
         if ($this->userService->login($request)) {
             $user = User::with('store')->where('email', $request->email)->first();
             $options = json_decode($user->store->database_options, true);
+                        // $token = JWTAuth::attempt(['email' => $user->email, 'password' => $request->password]);
+            $databaseName = DB::connection()->getDatabaseName(); 
+
             // $token_1 = $user->createToken($user->name)->plainTextToken;
-            $user->setConnection('db_auth');  
+            // $user->setConnection('db_auth');  
             $token = $user->createToken('access-token')->plainTextToken;
 
             Config::set('database.connections.tenant.database', $options['dbname']);
@@ -39,10 +44,13 @@ class AuthController extends Controller
             DB::reconnect('tenant');
             DB::setDefaultConnection('tenant');
             $user->setConnection('tenant');
-            $databaseName = DB::connection()->getDatabaseName(); 
+            
+
+
             // $token_2 = $user->createToken($user->name)->plainTextToken;
             return response()->apiSuccess([
                 'token' => $token,
+                'databaseName' => $databaseName,
                 // 'token_1' => $token_1,
                 // 'token_2' => $token_2,
                 'user' => $user
@@ -53,10 +61,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
-
-
-
+    { 
         DB::beginTransaction();
         try {
             $request->validate([
@@ -64,7 +69,7 @@ class AuthController extends Controller
                 'store_name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:' . User::class,
                 'password' => 'required',
-                'user_name' => 'required|string|max:255|unique:' . User::class,
+                'username' => 'required|string|max:255|unique:' . User::class,
                 'phone' => 'nullable|string|max:20',
                 'theme' => 'nullable|string|max:255',
             ]);
@@ -73,7 +78,7 @@ class AuthController extends Controller
             $user = (new User())->setConnection('mysql')->create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'username' => $request->user_name,
+                'username' => $request->username,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
             ]);
