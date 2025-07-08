@@ -54,11 +54,9 @@ class IndexController extends Controller
     {
 
         $store = Store::getStore($request);
-<<<<<<< HEAD
  	// dd(auth();
-=======
         
->>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
+
 
         if (! empty($store) &&  auth()->check()) {
 
