@@ -20,12 +20,12 @@ class AuthController extends Controller
 {
      public function create()
     {
-        return view('Auth/Register');
+        return view('auth.register');
         // return Inertia::render('Auth/Register');
     }
      public function login_page()
     {
-        return view('Auth/login');
+        return view('auth.login');
         // return Inertia::render('Auth/Register');
     }
 
@@ -111,7 +111,7 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        Config::set('database.connections.mysql.database', 'talatala');
+        Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
         DB::setDefaultConnection('mysql'); 

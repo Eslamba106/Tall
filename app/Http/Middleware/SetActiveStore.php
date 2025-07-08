@@ -17,7 +17,7 @@ class SetActiveStore
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Config::set('database.connections.mysql.database', 'talatala');
+        Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
         DB::setDefaultConnection('mysql');

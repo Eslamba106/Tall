@@ -29,7 +29,12 @@ class Dashboard extends Controller
         // dd("fad");
 
         $tenant = Tenants::getTenant();
-        $user   = Auth::user();
+//auth()->logout();
+$host = request()->getHost();
+$parts = explode('.', $host);
+
+  
+      $user   = Auth::user();
         // dd($user);
         // if ($user->super == 1) {
         //     $allUser    = User::count();
@@ -75,11 +80,11 @@ class Dashboard extends Controller
         // } else {
 
             $tenant     = Tenant::where('user_id', $user->id)->first();
-            $tenantStor = Store::where('tenant_id', $user->id)->first();
+            $tenantStor = (new Store())->setConnection('mysql')->where('tenant_id', $user->id)->first();
             // dd($tenantStor);
             if (! is_null($tenantStor)) {
 
-                $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash'; 
+                $link = 'https://' . $tenantStor->domains . '.tall3.com/' . 'admin/dash'; 
                 return redirect()->to($link);
             }
             // Auth::guard('web')->logout();

@@ -56,12 +56,12 @@ class CreateStoreDatebase
         
        
         // DB::purge('mysql');
-  $latestUser = DB::table('users')->orderBy('id', 'desc')->first();
+  	  $latestUser = DB::connection("mysql")->table('users')->orderBy('id', 'desc')->first();
 
         if ($latestUser) {
             DB::connection("tenant")->table('users')->insert((array) $latestUser);
         }
-  $latestStore = DB::table('stores')->orderBy('id', 'desc')->first();
+        $latestStore = DB::connection("mysql")->table('stores')->orderBy('id', 'desc')->first();
 
         if ($latestStore) {
             DB::connection("tenant")->table('stores')->insert((array) $latestStore);
