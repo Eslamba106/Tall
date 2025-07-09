@@ -63,9 +63,10 @@ class AuthController extends Controller
             ]);
             event(new StoreCreated($store));
 
-            Auth::login($user);
+            // Auth::login($user);
             DB::commit();
-            return redirect(RouteServiceProvider::HOME);
+            return redirect()->url("https://{{$store->domains}}localhost/tall3.com/");
+            // return redirect(RouteServiceProvider::HOME);http://localhost/tall3.com/
         } catch (Exception $e) {
             DB::rollBack();
             return back()->with('error', $e->getMessage());
