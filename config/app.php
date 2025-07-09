@@ -57,15 +57,11 @@ return [
     |
     */
 
-<<<<<<< HEAD
+
     'url' => env('APP_URL', 'https://tall3.com/'),
 
     'asset_url' => 'https://tall3.com',
-=======
-    'url' => env('APP_URL', 'http://localhost/tall3.com'),
-
-    'asset_url' => 'http://localhost/tall3.com/public',
->>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
+    
 
     /*
     |--------------------------------------------------------------------------

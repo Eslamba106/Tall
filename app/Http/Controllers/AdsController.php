@@ -53,7 +53,7 @@ class AdsController extends Controller
         'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',  
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120', 
         'phone' => 'nullable|string|max:20',
-        'method' => 'nullable|string|max:100',
+//        'method' => 'nullable|string|max:100',
     ]);
         // try {
             $main_ads = $this->ads->store_ads($request);

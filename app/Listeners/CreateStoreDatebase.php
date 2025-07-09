@@ -43,7 +43,8 @@ class CreateStoreDatebase
 
     private function copyDataToTenantDB(string $db, $company)
     {
-<<<<<<< HEAD
+
+
         // DB::purge('tenant');
         // Config::set('database.connections.tenant.database', $db);
         // DB::reconnect('tenant');
@@ -54,8 +55,10 @@ class CreateStoreDatebase
        
         // DB::purge('mysql');
   	  $latestUser = DB::connection("mysql")->table('users')->orderBy('id', 'desc')->first();
-=======
-   $tablesToCopy = ['car_types' , 'car_models','estate_products', 'estate_product_types','estate_product_transactions' , 'cities' , 'districts'];
+
+//   $tablesToCopy = ['car_types' , 'car_models','estate_products', 'estate_product_types','estate_product_transactions' , 'cities' , 'districts'];
+   $tablesToCopy = ['car_types' , 'car_models','estate_products', 'estate_product_types','estate_product_transactions' , 'cities' , 'districts' ,'business_settings' ];
+
         foreach ($tablesToCopy as $table) {
             $data = DB::connection("mysql")->table($table)->get();
             if ($data->isNotEmpty()) {
@@ -65,7 +68,6 @@ class CreateStoreDatebase
             }
         }
         $latestUser = DB::connection("mysql")->table('users')->orderBy('id', 'desc')->first();
->>>>>>> 61b02d597743f77924c3816e2ff85e09167a4798
 
         if ($latestUser) {
             DB::connection("tenant")->table('users')->insert((array) $latestUser);

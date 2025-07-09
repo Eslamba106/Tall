@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('estate_product_id')->nullable()->constrained('estate_products')->cascadeOnDelete();
-            $table->foreignId('estate_type_id')->nullable()->constrained('estate_product_types')->cascadeOnDelete();
-            $table->foreignId('estate_transactions_id')->nullable()->constrained('estate_product_transactions')->cascadeOnDelete();
-            $table->foreignId('city_id')->nullable()->constrained('cities')->cascadeOnDelete();
-            $table->foreignId('district_id')->nullable()->constrained('districts')->cascadeOnDelete();
-            $table->foreignId('car_type_id')->nullable()->constrained('car_types')->cascadeOnDelete();
-            $table->foreignId('car_model_id')->nullable()->constrained('car_models')->cascadeOnDelete();
+            $table->string('estate_product_id')->nullable();
+            $table->string('estate_type_id')->nullable();
+            $table->string('estate_transactions_id')->nullable();
+            $table->string('city_id')->nullable();
+            $table->string('district_id')->nullable();
+            $table->string('car_type_id')->nullable();
+            $table->string('car_model_id')->nullable();
             $table->string('model_year')->nullable();
             $table->string('sale_price')->nullable();
             $table->string('rent_price')->nullable();
@@ -31,8 +31,8 @@ return new class extends Migration
             $table->string('oil')->nullable();
             $table->string('financing')->nullable();
             $table->string('price_when_call')->nullable();
-                        $table->string('phone')->nullable();
-            $table->string('methode')->nullable(); 
+            $table->string('phone')->nullable();
+            $table->string('method')->nullable(); 
             $table->enum('status',['active' ,'inactive'])->default('active');
             $table->text('video_link')->nullable();
             $table->text('thumbnail')->nullable();

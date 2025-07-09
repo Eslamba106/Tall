@@ -62,8 +62,8 @@ class AuthController extends Controller
 
     public function register(Request $request)
     { 
-        DB::beginTransaction();
-        try {
+//        DB::beginTransaction();
+  //      try {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'store_name' => 'required|string|max:255',
@@ -91,16 +91,16 @@ class AuthController extends Controller
                 'theme' => $request->theme,
             ]);
             event(new StoreCreated($store));
-            DB::commit();
+    //        DB::commit();
             return  response()->apiSuccess('User registered successfully', [
                 'user' => $user,
                 'store' => $store,
                 'token' => $user->createToken($user->name)->plainTextToken
             ]);
-        } catch (Exception $e) {
-            DB::rollBack();
-            return response()->apiFail($e->getMessage(), 500);
-        }
+      //  } catch (Exception $e) {
+        //    DB::rollBack();
+          //  return response()->apiFail($e->getMessage(), 500);
+        //}
     }
 
     public function logout(Request $request)
