@@ -32,8 +32,11 @@ return new class extends Migration
             $table->string('financing')->nullable();
             $table->string('price_when_call')->nullable();
             $table->string('phone')->nullable();
-            $table->string('method')->nullable(); 
+
+            $table->string('methode')->nullable(); 
             $table->enum('status',['active' ,'inactive'])->default('active');
+            $table->string('method')->nullable();
+        
             $table->text('video_link')->nullable();
             $table->text('thumbnail')->nullable();
             $table->text('images')->nullable();

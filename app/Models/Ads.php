@@ -17,4 +17,7 @@ class Ads extends Model
     public function district(){
         return $this->belongsTo(District::class,'district_id');
     }
+    // public function car_model(){
+    //     return $this->belongsTo(CarModel::class,'district_id');
+    // }
 }

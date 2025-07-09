@@ -265,8 +265,7 @@ class EstateController extends Controller
         $estate->city     = $request->city;
         $estate->color     = $request->colorCode;
         $estate->colortxt     = $request->colortxt;
-        $estate->phone     = $request->phone3;
-        // $estate->methode     = $request->methode;
+        $estate->phone     = $request->phone3; 
         $estate->state     = $request->state;
         if ($request->is_cover_image_q != 'on') {
             $estate->thumbnail_image = !empty($request->is_cover_image) ? $name_cover : '';

@@ -56,7 +56,7 @@
                                 {{-- @can('create_tenant') --}}
                                     <a href="{{ route('ads.create') }}" class="btn color_primary">
                                         <i class="tio-add"></i>
-                                        <span class="text">{{ __('اضافة طلب') }}</span>
+                                        <span class="text">{{ __('اضافة اعلان') }}</span>
                                     </a>
                                
                             </div>
@@ -69,8 +69,8 @@
                             <thead class="thead-light thead-50 text-capitalize">
                                 <tr>
                                     <th>{{ __('م') }}</th>
-                                    <th class="text-center">{{ __('اسم العميل') }}</th>
-                                    <th class="text-center">{{ __('الاعلان') }}</th>
+                                    <th class="text-center">{{ __('اسم الاعلان') }}</th>
+                                    {{-- <th class="text-center">{{ __('الاعلان') }}</th> --}}
                                     <th class="text-center">{{ __('تاريخ الطلب') }}</th> 
                                     <th class="text-center">{{ __('العمليات') }}</th>
                                 </tr>
@@ -81,11 +81,11 @@
                                         <th scope="row">{{ $ads->firstItem() + $k }}</th>
 
                                         <td class="text-center">
-                                            {{   ($item_ads->customer->name ?? __('general.not_available'))  }}
+                                            {{   ($item_ads->name ?? __('general.not_available'))  }}
                                         </td>
-                                        <td class="text-center">
-                                            {{ $item_ads->name ?? __('general.not_available')}}
-                                        </td>
+                                        {{-- <td class="text-center">
+                                            {{ $item_ads->car->name ?? $item_ads->car->name }}
+                                        </td> --}}
                                         <td class="text-center">
                                             {{ $item_ads->created_at ?? __('general.not_available')}}
                                         </td>

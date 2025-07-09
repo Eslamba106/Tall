@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="token" class="title-color ">{{ __('الماركة') }}</label>
             <select class="js-select2-custom form-control" name="car_type_id" onchange="select_models(this)" required>
-                <option selected disabled>{{ __('اختر العميل') }} </option>
+                <option selected disabled>{{ __('اختر الماركة') }} </option>
                 @foreach ($car_types as $car_type)
                     <option value="{{ $car_type->id }}">{{ $car_type->name ?? $car_type->name_ar }} </option>
                 @endforeach
