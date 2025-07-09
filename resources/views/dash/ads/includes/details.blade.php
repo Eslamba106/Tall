@@ -19,7 +19,7 @@
         <div class="col-sm-12 mb-2">
             <label class="mt-2">نوع التعامل</label>
             <div class="col-lg-12 col-sm-12">
-                <select value="{{ old('methode') }}" class="form-control" data-trigger name="methode"
+                <select value="{{ old('method') }}" class="form-control" data-trigger name="method"
                     id="choices-methode" required>
                     <option value="0" selected>سعر ثابت</option>
                     <option value="1">قابل للتفاوض</option>
