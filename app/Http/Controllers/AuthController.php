@@ -37,8 +37,8 @@ class AuthController extends Controller
     public function add_store(Request $request)
     {
  
-        DB::beginTransaction();
-        try {
+        // DB::beginTransaction();
+        // try {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
@@ -64,13 +64,13 @@ class AuthController extends Controller
             event(new StoreCreated($store));
 
             // Auth::login($user);
-            DB::commit();
-            return redirect()->url("https://{{$store->domains}}localhost/tall3.com/");
+            // DB::commit();
+            return redirect()->url("https://{$store->domains}.tall3.com/");
             // return redirect(RouteServiceProvider::HOME);http://localhost/tall3.com/
-        } catch (Exception $e) {
-            DB::rollBack();
-            return back()->with('error', $e->getMessage());
-        }
+        // } catch (Exception $e) {
+        //     DB::rollBack();
+        //     return back()->with('error', $e->getMessage());
+        // }
     }
 
     public function login(Request $request)
