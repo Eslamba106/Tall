@@ -44,7 +44,7 @@ class OfferController extends Controller
         // return("user" .auth('sanctum')->check());
 
         $list = $this->offer->get_offer_list();
-        return response()->apiSuccess('Offer List ', $list);
+        return response()->apiSuccess( $list);
     }
     public function delete($id)
     {
