@@ -21,7 +21,7 @@ class OfferController extends Controller
         if (!$main_offer) {
             return response()->apiFail('Failed to add Offer', 500);
         }
-        return response()->apiSuccess($main_offer , 'Offer added successfully');
+        return response()->apiSuccess( 'Offer added successfully' , $main_offer );
     }
     public function update(Request $request, $id)
     {
@@ -29,7 +29,7 @@ class OfferController extends Controller
         if (!$offer) {
             return response()->apiFail('Offer not found', 404);
         }
-        return response()->apiSuccess($offer,'Offer updated successfully');
+        return response()->apiSuccess('Offer updated successfully' ,$offer );
     }
     public function get_offer($id)
     {
@@ -52,6 +52,6 @@ class OfferController extends Controller
         if (!$offer) {
             return response()->apiFail('Offer not found', 404);
         }
-        return response()->apiSuccess($offer ,'Offer deleted successfully', );
+        return response()->apiSuccess( 'Offer deleted successfully',$offer );
     }
 }
