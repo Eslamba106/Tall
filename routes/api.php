@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AdsController;
+use App\Http\Controllers\Api\OfferController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\Auth\AuthController;
@@ -47,6 +48,14 @@ Route::group(['prefix' => 'customer', 'middleware' => 'auth:sanctum'], function 
     Route::get('/delete/{id}', [CustomerController::class, 'delete'])->name('api.customer.delete');
     Route::post('/update/{id}', [CustomerController::class, 'update'])->name('api.customer.update');
     Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('api.customer.get_customer');
+
+});
+Route::group(['prefix' => 'offer', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('/store', [OfferController::class, 'store'])->name('api.offer.store');
+    Route::get('/list', [OfferController::class, 'list'])->name('api.offer.list'); 
+    Route::get('/delete/{id}', [OfferController::class, 'delete'])->name('api.offer.delete');
+    Route::post('/update/{id}', [OfferController::class, 'update'])->name('api.offer.update');
+    Route::get('/get_offer/{id}', [OfferController::class, 'get_offer'])->name('api.offer.get_offer');
 
 });
 Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {

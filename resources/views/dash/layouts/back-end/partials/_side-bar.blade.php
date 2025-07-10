@@ -7,7 +7,7 @@
                 <div class="navbar-brand-wrapper justify-content-between side-logo">
                     <!-- Logo -->
                     @php($e_commerce_logo=\App\Models\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value ?? null)
-                    <a class="navbar-brand" href=" " aria-label="Front">
+                    <a class="navbar-brand" href="{{route('index')}}" aria-label="Front">
                         <img onerror="this.src='{{asset('assets/back-end/img/900x400/img1.jpg')}}'"
                              class="navbar-brand-logo-mini for-web-logo max-h-30"
                              src="{{asset("storage/app/company/$e_commerce_logo")}}" alt="Logo">
@@ -105,6 +105,41 @@
                                                 <span class="badge badge-soft-info badge-pill ml-1">
                                                     {{\App\Models\MainOrder::count()}}
                                                 </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/customer*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                   href="javascript:void(0)" title="{{__('العملاء')}}">
+                                    <i class="tio-shopping-cart-outlined nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{__('العملاء')}}
+                                    </span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('admin/customer/list')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/customers/list/all')?'active':''}}">
+                                        <a class="nav-link" href="{{route('admin.customer.list',['all'])}}"
+                                           title="{{__('all')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                                {{__('قائمة العملاء')}}
+                                                <span class="badge badge-soft-info badge-pill ml-1">
+                                                    {{\App\Models\Customer::count()}}
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('admin/customers/list/all')?'active':''}}">
+                                        <a class="nav-link" href="{{route('admin.customer.create' )}}"
+                                           title="{{__('all')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">
+                                                {{__('اضافة عميل جديد')}}
+                                                
                                             </span>
                                         </a>
                                     </li>

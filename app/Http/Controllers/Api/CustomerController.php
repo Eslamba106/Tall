@@ -8,8 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CustomerController extends Controller
 {
-        public $customer;
-    public $model;
+        public $customer; 
     public function __construct(CustomerService $customer)
     {
         $this->customer = $customer; 

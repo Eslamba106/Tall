@@ -124,9 +124,13 @@ $parts = explode('.', $host);
             $customer        = Customer::count();
             $totalOrdersData = $this->last30DaysOrderChart($request->timeline);
 
-            return view('adminDashboard', compact('deal',
+            return view('admin-views.dashboard', compact('deal',
                 'deal1', 'deal2', 'deal3', 'deal4', 'deal5'
                 , 'customer', 'estate', 'order', 'tenant', 'totalOrdersData'));
+
+            // return view('adminDashboard', compact('deal',
+            //     'deal1', 'deal2', 'deal3', 'deal4', 'deal5'
+            //     , 'customer', 'estate', 'order', 'tenant', 'totalOrdersData'));
     }
     public function stores()
     {

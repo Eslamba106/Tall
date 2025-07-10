@@ -12,7 +12,9 @@ use App\Http\Controllers\MainRegistration;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CustomerController;
+// use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\admin\CustomerController;
+
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SettingsController;
@@ -84,6 +86,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/change-status/{id}', [AdsController::class, 'updateStatus'])->name('ads.updateStatus');
         Route::get('/show/{id}', [AdsController::class, 'show'])->name('ads.show');
     });
+
+    Route::group(['prefix' => 'customer' ], function () {
+    Route::post('/store', [CustomerController::class, 'store'])->name('admin.customer.store');
+    Route::get('/list', [CustomerController::class, 'list'])->name('admin.customer.list'); 
+    Route::get('/delete', [CustomerController::class, 'delete'])->name('admin.customer.delete');
+    Route::post('/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
+    Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('admin.customer.get_customer');
+    Route::get('/create', [CustomerController::class, 'create'])->name('admin.customer.create');
+    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+    
+
+});
     //Deals
     Route::get('/deals', [DealsController::class, 'index'])->name('deals.index');
     Route::post('/deals/change/status', [DealsController::class, 'change'])->name('deals.change');

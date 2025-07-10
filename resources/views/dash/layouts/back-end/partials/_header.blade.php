@@ -5,7 +5,7 @@
             <div class="navbar-brand-wrapper">
                 <!-- Logo -->
                 @php($e_commerce_logo=\App\Models\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value ?? null)
-                <a class="navbar-brand" href=" " aria-label="">
+                <a class="navbar-brand" href="{{route('index')}}" aria-label="">
                     <img class="navbar-brand-logo"
                          onerror="this.src='{{asset('assets/front-end/img/image-place-holder.png')}}'"
                          src="{{asset("storage/app/company/$e_commerce_logo")}}" alt="Logo">
