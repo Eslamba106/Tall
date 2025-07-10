@@ -27,14 +27,14 @@ class AdsController extends Controller
     {
 
         $main_ads = $this->ads->store_ads($request);
-        return response()->apiSuccess('Ads added successfully', $main_ads);
+        return response()->apiSuccess( $main_ads);
     }
     public function list(Request $request)
     {
         // return("user" .auth('sanctum')->check());
 
         $list = $this->ads->get_ads_list();
-        return response()->apiSuccess('Ads List ', $list);
+        return response()->apiSuccess( $list );
     }
     public function delete($id)
     {
@@ -42,7 +42,7 @@ class AdsController extends Controller
         if (!$ads) {
             return response()->apiFail('Ads not found', 404);
         }
-        return response()->apiSuccess('Ads deleted successfully', $ads);
+        return response()->apiSuccess($ads);
     }
     public function updateStatus($id)
     {
@@ -50,12 +50,12 @@ class AdsController extends Controller
         if (!$ads) {
             return response()->apiFail('Ads not found', 404);
         }
-        return response()->apiSuccess('Ads status updated successfully', $ads);
+        return response()->apiSuccess( $ads);
     }
 
     public function get_models($id)
     {
-        $models = CarModel::where('car_type_id', $id)->get(['id', 'name']);
+        $models = CarModel::where('car_type_id', $id)->get( );
         return response()->json([
             'success' => true,
             'models' => $models,
@@ -64,28 +64,28 @@ class AdsController extends Controller
 
     public function get_districts($id)
     {
-        $districts = District::where('city_id', $id)->get(['id', 'name']);
+        $districts = District::where('city_id', $id)->get( );
         return response()->apiSuccess([
             'districts' => $districts,
         ]);
     }
     public function get_cities()
     {
-        $cities = City::get(['id', 'name']);
+        $cities = City::get( );
         return response()->apiSuccess([
             'cities' => $cities,
         ]);
     }
     public function get_cars()
     {
-        $car_types = CarType::latest()->select('id', 'name')->get();
+        $car_types = CarType::latest()->get();
         return response()->apiSuccess([
             'car_types' => $car_types,
         ]);
     }
     public function get_estate_product()
     {
-        $estate_product = EstateProduct::latest()->select('id', 'name')->get();
+        $estate_product = EstateProduct::latest()->get();
         return response()->apiSuccess([
             'estate_product' => $estate_product,
         ]);
