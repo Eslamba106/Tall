@@ -1,23 +1,23 @@
 <?php
 
-use App\Http\Controllers\Dashboard;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdsController;
-use App\Http\Controllers\Subscriptions;
-use App\Http\Controllers\DealsController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\EstateController;
-use App\Http\Controllers\MainRegistration;
-use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\GeneralController;
-use App\Http\Controllers\ProfileController;
-// use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\admin\CustomerController;
-
+use App\Http\Controllers\AdsController;
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\DealsController;
+use App\Http\Controllers\EstateController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MainRegistration;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrdersController;
+// use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Subscriptions;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,6 @@ use App\Http\Controllers\SettingsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::post('/estatefilter', [IndexController::class, 'estatefilter'])->name('estatefilter');
@@ -45,7 +44,11 @@ Route::get('/autoLoginBase/{hash}', [IndexController::class, 'autoLoginBase'])->
 Route::get('/superLoginer', [IndexController::class, 'autoLogin'])->name('autoLogin');
 
 Route::post('publishStore', [MainRegistration::class, 'store'])->name('register.store');
+Route::group(['prefix' => 'offer'], function () {
+    Route::get('/request', [OfferController::class, 'requests'])->name('offer.request');
+    Route::post('/store', [OfferController::class, 'store'])->name('offer.store');
 
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {});
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -68,7 +71,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/update/{id}', [EstateController::class, 'update'])->name('estate.update');
     Route::post('estate/imgs', [EstateController::class, 'imagesUpload'])->name('estate.imagesUpload');
 
-    // Ads 
+    // Ads
     Route::group(['prefix' => 'ads'], function () {
         Route::get('/create', [AdsController::class, 'create'])->name('ads.create');
         Route::get('/get_models/{id}', [AdsController::class, 'get_models'])->name('ads.get_models');
@@ -87,15 +90,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/show/{id}', [AdsController::class, 'show'])->name('ads.show');
     });
 
-    Route::group(['prefix' => 'customer' ], function () {
-    Route::post('/store', [CustomerController::class, 'store'])->name('admin.customer.store');
-    Route::get('/list', [CustomerController::class, 'list'])->name('admin.customer.list'); 
-    Route::get('/delete', [CustomerController::class, 'delete'])->name('admin.customer.delete');
-    Route::post('/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
-    Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('admin.customer.get_customer');
-    Route::get('/create', [CustomerController::class, 'create'])->name('admin.customer.create');
-    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
-    
+    Route::group(['prefix' => 'customer'], function () {
+        Route::post('/store', [CustomerController::class, 'store'])->name('admin.customer.store');
+        Route::get('/list', [CustomerController::class, 'list'])->name('admin.customer.list');
+        Route::get('/delete', [CustomerController::class, 'delete'])->name('admin.customer.delete');
+        Route::post('/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
+        Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('admin.customer.get_customer');
+        Route::get('/create', [CustomerController::class, 'create'])->name('admin.customer.create');
+        Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+
+    });
+// offers
+Route::group(['prefix' => 'offer'], function () {
+    Route::get('/list', [OfferController::class, 'list'])->name('offer.list'); 
 
 });
     //Deals
@@ -136,7 +143,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/export', [SettingsController::class, 'export'])->name('export');
     Route::post('/export', [SettingsController::class, 'exportStore'])->name('exportStore');
 
-
     // super
     Route::get('/subscription', [Subscriptions::class, 'index'])->name('subscription.index');
     Route::get('/bills', [Subscriptions::class, 'bills'])->name('subscription.bills');
@@ -157,10 +163,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/get_order/{id}', [OrderController::class, 'get_order'])->name('order.get_order');
     });
 });
-
-
-
-
 
 // Route::middleware('auth')->group(function () {
 //   //  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

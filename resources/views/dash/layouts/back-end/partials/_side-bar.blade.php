@@ -7,10 +7,9 @@
                 <div class="navbar-brand-wrapper justify-content-between side-logo">
                     <!-- Logo -->
                     @php($e_commerce_logo=\App\Models\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value ?? null)
-                    <a class="navbar-brand" href="{{route('index')}}" aria-label="Front">
-                        <img onerror="this.src='{{asset('assets/back-end/img/900x400/img1.jpg')}}'"
-                             class="navbar-brand-logo-mini for-web-logo max-h-30"
-                             src="{{asset("storage/app/company/$e_commerce_logo")}}" alt="Logo">
+                    <a class="navbar-brand  " href="{{route('index')}}" aria-label="Front">
+                        <img  
+                             src="{{asset('assets/images/login.png')}}" alt="Logo">
                     </a>
                     <!-- Navbar Vertical Toggle -->
                     <button type="button"
@@ -35,7 +34,7 @@
                         <div class="search--form-group">
                             <button type="button" class="btn"><i class="tio-search"></i></button>
                             <input type="text" class="js-form-search form-control form--control" id="search-bar-input"
-                                   placeholder="{{translate('search_menu')}}...">
+                                   placeholder="{{__('بحث في القائمة')}}...">
                         </div>
                     </div>
                     <!-- End Search Form -->
@@ -43,11 +42,11 @@
                         <!-- Dashboards -->
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/dashboard')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
-                               title="{{translate('dashboard')}}"
+                               title="{{__('الرئيسية')}}"
                                href=" ">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{translate('dashboard')}}
+                                    {{__('الرئيسية')}}
                                 </span>
                             </a>
                         </li>
@@ -147,7 +146,15 @@
                                 </ul>
                             </li>
 
-                            
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/offer*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link  "
+                                   href="{{ route('offer.list') }}" title="{{__('استقبال العروض')}}">
+                                    <i class="tio-shopping-cart-outlined nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{__('استقبال العروض')}}
+                                    </span>
+                                </a>
+                                </li>
                         <!--Order Management Ends-->
  
                         <!--System Settings end-->

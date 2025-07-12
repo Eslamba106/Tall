@@ -1,4 +1,4 @@
-@extends('store.theme2.layouts.store')
+@extends('store.theme1.layouts.store')
 @section('page-title')
     {{ __('الرئيسية') }}
 @endsection

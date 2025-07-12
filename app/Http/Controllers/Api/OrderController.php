@@ -21,30 +21,30 @@ class OrderController extends Controller
         if (!$main_order) {
             return response()->apiFail('Failed to add Order', 500);
         }
-        return response()->apiSuccess('Order added successfully', $main_order);
+        return response()->apiSuccess($main_order , 'Order added successfully' );
     }
     public function update(Request $request, $id)
     {
         $order = $this->order->update_order($id, $request);
         if (!$order) {
-            return response()->apiFail('Order not found', 404);
+            return response()->apiFail('Order not found' );
         }
-        return response()->apiSuccess('Order updated successfully', $order);
+        return response()->apiSuccess($order, 'Order updated successfully');
     }
     public function get_order($id)
     {
         $order = $this->order->get_order($id);
         if (!$order) {
-            return response()->apiFail('Order not found', 404);
+            return response()->apiFail( );
         }
-        return response()->apiSuccess('Order updated successfully', $order);
+        return response()->apiSuccess($order  );
     }
     public function list(Request $request)
     {
         // return("user" .auth('sanctum')->check());
 
         $list = $this->order->get_order_list();
-        return response()->apiSuccess('Order List ', $list);
+        return response()->apiSuccess($list , 'Order List ');
     }
     public function delete($id)
     {
@@ -52,6 +52,6 @@ class OrderController extends Controller
         if (!$order) {
             return response()->apiFail('Order not found', 404);
         }
-        return response()->apiSuccess('Order deleted successfully', $order);
+        return response()->apiSuccess('Order deleted successfully' );
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('admin')->default(0);
             $table->string('affiliate')->nullable();
+            $table->string('city')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

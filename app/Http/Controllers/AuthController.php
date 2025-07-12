@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         return view('auth.login');
         // return Inertia::render('Auth/Register');
-       return view('auth.login'); 
+    //    return view('auth.login'); 
     }
 
     /**

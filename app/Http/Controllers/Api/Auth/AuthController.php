@@ -80,6 +80,7 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'username' => $request->username,
                 'phone' => $request->phone,
+                'city' => $request->city ?? null,
                 'password' => Hash::make($request->password),
             ]);
             $slug = $request->name . '_' . rand(1, 10000);

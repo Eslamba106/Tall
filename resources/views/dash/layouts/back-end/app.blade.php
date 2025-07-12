@@ -112,7 +112,11 @@
 <script src="{{asset('assets/back-end')}}/js/sweet_alert.js"></script>
 <script src="{{asset('assets/back-end')}}/js/toastr.js"></script>
 {!! Toastr::message() !!}
-
+<script>
+        $(document).on('change', '.bulk_check_all', function() {
+            $('input.check_bulk_item:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
 <script>
     toastr.options = {
         "closeButton": false,

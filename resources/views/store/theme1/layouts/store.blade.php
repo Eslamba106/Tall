@@ -26,39 +26,40 @@
       $('.header-fixed').toggleClass('active');
     });
 
-  </script>
-    {!! Toastr::message() !!}
+  <<script src="{{asset('assets/back-end')}}/js/toastr.js"></script>
+{!! Toastr::message() !!}
 
+<script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-left",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+</script>
+
+@if ($errors->any())
     <script>
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-bottom-left",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+        @foreach($errors->all() as $error)
+        toastr.error('{{$error}}', Error, {
+            CloseButton: true,
+            ProgressBar: true
+        });
+        @endforeach
     </script>
-
-    @if ($errors->any())
-        <script>
-            @foreach ($errors->all() as $error)
-                toastr.error('{{ $error }}', Error, {
-                    CloseButton: true,
-                    ProgressBar: true
-                });
-            @endforeach
-        </script>
-    @endif
+@endif
+   
 @stack('js-main')
 </body>
 </html>

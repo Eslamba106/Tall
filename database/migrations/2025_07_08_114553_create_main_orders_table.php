@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->foreignId('ads_id')->constrained('ads')->onDelete('cascade');
             $table->text('notes')->nullable();
+            $table->string('status')->nullable()->default('pending');
             $table->timestamps();
         });
     }

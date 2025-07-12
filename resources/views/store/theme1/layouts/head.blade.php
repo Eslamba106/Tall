@@ -5,6 +5,7 @@
     <title>@yield('page-title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts and icons -->
+    <link rel="stylesheet" href="{{asset('assets/back-end')}}/css/toastr.css">
 
     {{-- <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet" /> --}}
     <style>

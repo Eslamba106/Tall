@@ -34,9 +34,12 @@ return new class extends Migration
             $table->string('phone')->nullable();
 
             $table->string('methode')->nullable(); 
-            $table->enum('status',['active' ,'inactive'])->default('active');
-            $table->string('method')->nullable();
-        
+            $table->enum('status',['active' ,'inactive'])->default('active'); 
+            $table->string('method')->nullable(); 
+            $table->string('mileage')->nullable();
+            $table->string('facade')->nullable();
+            $table->string('pieceLength')->nullable();
+            $table->string('space')->nullable(); 
             $table->text('video_link')->nullable();
             $table->text('thumbnail')->nullable();
             $table->text('images')->nullable();

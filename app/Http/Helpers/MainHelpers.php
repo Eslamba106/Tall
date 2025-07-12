@@ -67,6 +67,14 @@ if (!function_exists('get_theme_view')) {
     }
 }
 
+if (!function_exists('get_my_theme')) { 
+    function get_my_theme($path, $data = [])
+    {
+        $theme = getTheme(request());
+        return view('front.themes.' . $theme . '.' . $path, $data);
+    }
+}
+
 
 if(!function_exists('translate')) {
     function  translate($key)

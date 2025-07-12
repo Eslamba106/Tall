@@ -143,7 +143,7 @@
                         </div> --}}
                     </div>
                     <div class="content-left">
-                        <a href="{{route('requests')}}" class="btn main-btn">{{getSetting('global_txt_m')}}
+                        <a href="{{route('offer.request')}}" class="btn main-btn">{{getSetting('global_txt_m')}}
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                                 <g id="Frame">
                                 <g id="SVGRepo_iconCarrier">

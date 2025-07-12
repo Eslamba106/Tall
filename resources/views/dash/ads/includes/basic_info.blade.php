@@ -42,7 +42,7 @@
 
 </div>
 <script>
-    $
+   
     function select_models(element) {
         var id = element.value;
 

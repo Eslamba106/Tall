@@ -39,6 +39,11 @@ class AbstractRepo
         $data['price_when_call'] = $request->input('price_when_call', null);
         $data['thumbnail']       = $request->input('thumbnail', null);
         $data['phone']       = $request->input('phone', null);
+        $data['mileage']       = $request->input('mileage', null);
+        $data['facade']       = $request->input('facade', null);
+        $data['pieceLength']       = $request->input('pieceLength', null);
+        $data['space']       = $request->input('space', null);
+                    
         $data['method']       = $request->input('method', null);
          if ($request->hasFile('thumbnail')) {
         $image_name = ImageManager::upload('ads/', 'webp', $request->file('thumbnail'));

@@ -33,6 +33,10 @@ return new class extends Migration
             $table->string('price_when_call')->nullable();
             $table->string('phone')->nullable();
             $table->string('method')->nullable(); 
+            $table->string('mileage')->nullable();
+            $table->string('facade')->nullable();
+            $table->string('pieceLength')->nullable();
+            $table->string('space')->nullable(); 
             $table->enum('status',['active' ,'inactive'])->default('active');
             $table->text('video_link')->nullable();
             $table->text('thumbnail')->nullable();

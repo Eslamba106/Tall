@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('super')->nullable();
             $table->string('admin')->nullable();
             $table->string('duration')->nullable();
+            $table->string('city')->nullable();
             $table->string('type')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
