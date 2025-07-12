@@ -28,7 +28,7 @@
 @endpush
 
 @section('content')
-<form action="{{ route('ads.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="content container-fluid">
         <div class="card mb-3 remove-card-shadow">
