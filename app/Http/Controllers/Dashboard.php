@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Facade\Tenants;
@@ -29,12 +30,12 @@ class Dashboard extends Controller
         // dd("fad");
 
         $tenant = Tenants::getTenant();
-//auth()->logout();
-$host = request()->getHost();
-$parts = explode('.', $host);
+        //auth()->logout();
+        $host = request()->getHost();
+        $parts = explode('.', $host);
 
-  
-      $user   = Auth::user();
+
+        $user   = Auth::user();
         // dd($user);
         // if ($user->super == 1) {
         //     $allUser    = User::count();
@@ -79,30 +80,30 @@ $parts = explode('.', $host);
         //     return view('index', compact('tenant', 'tenantStor', 'user', 'affilate', 'subscription'));
         // } else {
 
-            $tenant     = Tenant::where('user_id', $user->id)->first();
+        $tenant     = Tenant::where('user_id', $user->id)->first();
 
-            $tenantStor = (new Store())->setConnection('mysql')->where('tenant_id', $user->id)->first();
-            // dd($tenantStor);
-            if (! is_null($tenantStor)) {
+        $tenantStor = (new Store())->setConnection('mysql')->where('tenant_id', $user->id)->first();
+        // dd($tenantStor);
+        if (! is_null($tenantStor)) {
 
-                $link = 'https://' . $tenantStor->domains . '.tall3.com/' . 'admin/dash'; 
-                return redirect()->to($link);
-           dd($tenant);
+            $link = 'https://' . $tenantStor->domains . '.tall3.com/' . 'admin/dash';
+            return redirect()->to($link);
+            dd($tenant);
             $tenantStor = Store::where('tenant_id', $user->id)->first();
             // dd($tenantStor);
             if (! is_null($tenantStor)) {
 
-                $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash'; 
-                  $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)).'/tall/login_page';
+                $link = 'http://' . $tenantStor->domains . '.localhost/' . 'last_backup/admin/dash';
+                $newDomain = $request->getScheme() . '://' . $tenantStor->domains . '.' . str_replace('www.', '', parse_url(config('app.url'), PHP_URL_HOST)) . '/tall/login_page';
                 // dd($newDomain );
-                return redirect()->to($newDomain);}
-
+                return redirect()->to($newDomain);
             }
-            // Auth::guard('web')->logout();
+        }
+        // Auth::guard('web')->logout();
 
-            // $request->session()->invalidate();
+        // $request->session()->invalidate();
 
-            // $request->session()->regenerateToken();
+        // $request->session()->regenerateToken();
         // }
     }
     public function user_dashboard(Request $request)
@@ -111,44 +112,54 @@ $parts = explode('.', $host);
         $tenant = Tenants::getTenant();
         $user   = Auth::user();
         if ($user->super == 1) {
-                   $allUser    = User::count();
-                   $montheUser = User::where('created_at', '>=', Carbon::now()->subDays(30))->count();
-                   $weekUser   = User::where('created_at', '>=', Carbon::now()->subDays(7))->count();
-                   $affilate   = affiliateAdmin::count();
-       
-                   $durationUser    = User::where('duration', '<=', Carbon::now()->subDays(30))->count();
-                   $durationUsernot = User::where('duration', '>=', Carbon::now()->subDays(30))->count();
-       
-                   $freeUser       = User::where('subscription', 1)->count();
-                   $freeUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
-                   $freeUsernot    = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
-       
-                   $premUser        = User::where('subscription', '!=', 1)->count();
-                   $fpremUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
-                   $premUsernot     = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
-       
-                   return view('indexSuper', compact('allUser', 'affilate', 'freeUser', 'montheUser', 'weekUser', 'durationUser', 'durationUsernot', 'freeUseractive', 'freeUsernot', "premUser", "fpremUseractive", "premUsernot"));
-               }
-       
-              $tenant          = Store::first();
-            $estate          = Estate::count();
-            $order           = Order::count();
-            $deal            = Deal::count();
-            $deal1           = Deal::where('status', 1)->count();
-            $deal2           = Deal::where('status', 2)->count();
-            $deal3           = Deal::where('status', 3)->count();
-            $deal4           = Deal::where('status', 4)->count();
-            $deal5           = Deal::where('status', 5)->count();
-            $customer        = Customer::count();
-            $totalOrdersData = $this->last30DaysOrderChart($request->timeline);
+            $allUser    = User::count();
+            $montheUser = User::where('created_at', '>=', Carbon::now()->subDays(30))->count();
+            $weekUser   = User::where('created_at', '>=', Carbon::now()->subDays(7))->count();
+            $affilate   = affiliateAdmin::count();
 
-            return view('admin-views.dashboard', compact('deal',
-                'deal1', 'deal2', 'deal3', 'deal4', 'deal5'
-                , 'customer', 'estate', 'order', 'tenant', 'totalOrdersData'));
+            $durationUser    = User::where('duration', '<=', Carbon::now()->subDays(30))->count();
+            $durationUsernot = User::where('duration', '>=', Carbon::now()->subDays(30))->count();
 
-            // return view('adminDashboard', compact('deal',
-            //     'deal1', 'deal2', 'deal3', 'deal4', 'deal5'
-            //     , 'customer', 'estate', 'order', 'tenant', 'totalOrdersData'));
+            $freeUser       = User::where('subscription', 1)->count();
+            $freeUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
+            $freeUsernot    = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
+
+            $premUser        = User::where('subscription', '!=', 1)->count();
+            $fpremUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
+            $premUsernot     = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
+
+            return view('indexSuper', compact('allUser', 'affilate', 'freeUser', 'montheUser', 'weekUser', 'durationUser', 'durationUsernot', 'freeUseractive', 'freeUsernot', "premUser", "fpremUseractive", "premUsernot"));
+        }
+
+        $tenant          = Store::first();
+        $estate          = Estate::count();
+        $order           = Order::count();
+        $deal            = Deal::count();
+        $deal1           = Deal::where('status', 1)->count();
+        $deal2           = Deal::where('status', 2)->count();
+        $deal3           = Deal::where('status', 3)->count();
+        $deal4           = Deal::where('status', 4)->count();
+        $deal5           = Deal::where('status', 5)->count();
+        $customer        = Customer::count();
+        $totalOrdersData = $this->last30DaysOrderChart($request->timeline);
+
+        return view('admin-views.dashboard', compact(
+            'deal',
+            'deal1',
+            'deal2',
+            'deal3',
+            'deal4',
+            'deal5',
+            'customer',
+            'estate',
+            'order',
+            'tenant',
+            'totalOrdersData'
+        ));
+
+        // return view('adminDashboard', compact('deal',
+        //     'deal1', 'deal2', 'deal3', 'deal4', 'deal5'
+        //     , 'customer', 'estate', 'order', 'tenant', 'totalOrdersData'));
     }
     public function stores()
     {
@@ -178,9 +189,9 @@ $parts = explode('.', $host);
         $tenentS = tenantStor::where('name', $id)->first();
         $tenentS->delete();
         return redirect()->route('super.index')->withInput()->with(
-            'success', __('تم حذف المتجر!')
+            'success',
+            __('تم حذف المتجر!')
         );
-
     }
     public function loginStore(Request $request, $name)
     {
@@ -279,5 +290,4 @@ $parts = explode('.', $host);
 
         return $totalOrdersData;
     }
-
 }
