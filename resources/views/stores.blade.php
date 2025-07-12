@@ -45,7 +45,7 @@
                                                     <h6 class="mr-2 ms-3 my-auto">{{ $subs->name }}</h6>
                                                 </td>
                                                 <td><a
-                                                        href="https://{{ $tenantStor->domains . '.' . env('HOST_URL') }}">{{ $tenant->nametxt }}</a>
+                                                        href="https://{{ $tenantStor->domains . '.' . env('HOST_URL') }}">{{ '$tenant->nametxt' }}</a>
                                                 </td>
                                                 <td>
                                                     @if ($subs->affiliate)
