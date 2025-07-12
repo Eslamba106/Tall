@@ -108,9 +108,27 @@ $parts = explode('.', $host);
     public function user_dashboard(Request $request)
     {
         // dd("fad");
-
         $tenant = Tenants::getTenant();
         $user   = Auth::user();
+        if ($user->super == 1) {
+                   $allUser    = User::count();
+                   $montheUser = User::where('created_at', '>=', Carbon::now()->subDays(30))->count();
+                   $weekUser   = User::where('created_at', '>=', Carbon::now()->subDays(7))->count();
+                   $affilate   = affiliateAdmin::count();
+       
+                   $durationUser    = User::where('duration', '<=', Carbon::now()->subDays(30))->count();
+                   $durationUsernot = User::where('duration', '>=', Carbon::now()->subDays(30))->count();
+       
+                   $freeUser       = User::where('subscription', 1)->count();
+                   $freeUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
+                   $freeUsernot    = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', 1)->count();
+       
+                   $premUser        = User::where('subscription', '!=', 1)->count();
+                   $fpremUseractive = User::where('duration', '<=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
+                   $premUsernot     = User::where('duration', '>=', Carbon::now()->subDays(30))->where('subscription', '!=', 1)->count();
+       
+                   return view('indexSuper', compact('allUser', 'affilate', 'freeUser', 'montheUser', 'weekUser', 'durationUser', 'durationUsernot', 'freeUseractive', 'freeUsernot', "premUser", "fpremUseractive", "premUsernot"));
+               }
        
               $tenant          = Store::first();
             $estate          = Estate::count();
