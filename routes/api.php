@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,4 +76,13 @@ Route::group(['prefix' => 'subscriptions', 'middleware' => 'auth:sanctum'] ,func
     Route::get('/profile', [SubscriptionController::class, 'profile']);
     Route::post('/subscribe/{id}', [SubscriptionController::class, 'subscribe']);
     Route::post('/active/{id}', [SubscriptionController::class, 'active']);
+});
+
+Route::group(['prefix' => 'settings', 'middleware' => 'auth:sanctum'] ,function () {
+    Route::get('/', [SettingsController::class, 'index']);
+    Route::post('/update', [SettingsController::class, 'update']);
+    Route::get('/theme/{theme}', [SettingsController::class, 'themeUpdate']);
+    Route::post('/theme/{theme}', [SettingsController::class, 'themeUpdatePost']);
+    Route::get('/export', [SettingsController::class, 'export']);
+    Route::post('/export-store', [SettingsController::class, 'exportStore']);
 });
