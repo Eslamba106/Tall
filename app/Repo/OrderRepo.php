@@ -29,7 +29,7 @@ class OrderRepo  extends AbstractRepo
         $order->customer_id = $request->customer_id;
         $order->ads_id = $request->ads_id;
         $order->notes = $request->notes;  
-        $order->status = $request->status; // Assuming status is a field in the Order model
+//        $order->status = $request->status; // Assuming status is a field in the Order model
         $order->save();
 
         return $order;
@@ -41,7 +41,7 @@ class OrderRepo  extends AbstractRepo
             $order->customer_id = $request->customer_id ?? $order->customer_id;
             $order->ads_id = $request->ads_id ?? $order->ads_id;
             $order->notes = $request->notes ?? $order->notes;
-            $order->status = $request->status ?? $order->status;  
+  //          $order->status = $request->status ?? $order->status;  
             $order->save();
             return $order;
         }
