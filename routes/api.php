@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AdsController;
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'ads', 'middleware' => 'auth:sanctum'], function () {
 });
 Route::group(['prefix' => 'customer', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/store', [CustomerController::class, 'store'])->name('api.customer.store');
-    Route::get('/list', [CustomerController::class, 'list'])->name('api.customer.list'); 
+    Route::get('/list', [CustomerController::class, 'list'])->name('api.customer.list');
     Route::get('/delete/{id}', [CustomerController::class, 'delete'])->name('api.customer.delete');
     Route::post('/update/{id}', [CustomerController::class, 'update'])->name('api.customer.update');
     Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('api.customer.get_customer');
@@ -52,7 +53,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'auth:sanctum'], function 
 });
 Route::group(['prefix' => 'offer', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/store', [OfferController::class, 'store'])->name('api.offer.store');
-    Route::get('/list', [OfferController::class, 'list'])->name('api.offer.list'); 
+    Route::get('/list', [OfferController::class, 'list'])->name('api.offer.list');
     Route::get('/delete/{id}', [OfferController::class, 'delete'])->name('api.offer.delete');
     Route::post('/update/{id}', [OfferController::class, 'update'])->name('api.offer.update');
     Route::get('/get_offer/{id}', [OfferController::class, 'get_offer'])->name('api.offer.get_offer');
@@ -60,9 +61,18 @@ Route::group(['prefix' => 'offer', 'middleware' => 'auth:sanctum'], function () 
 });
 Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/store', [OrderController::class, 'store'])->name('api.order.store');
-    Route::get('/list', [OrderController::class, 'list'])->name('api.order.list'); 
+    Route::get('/list', [OrderController::class, 'list'])->name('api.order.list');
     Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('api.order.delete');
     Route::post('/update/{id}', [OrderController::class, 'update'])->name('api.order.update');
     Route::get('/get_order/{id}', [OrderController::class, 'get_order'])->name('api.order.get_order');
 
+});
+
+
+Route::group(['prefix' => 'subscriptions', 'middleware' => 'auth:sanctum'] ,function () {
+    Route::get('/', [SubscriptionController::class, 'index']);
+    Route::get('/bills', [SubscriptionController::class, 'bills']);
+    Route::get('/profile', [SubscriptionController::class, 'profile']);
+    Route::post('/subscribe/{id}', [SubscriptionController::class, 'subscribe']);
+    Route::post('/active/{id}', [SubscriptionController::class, 'active']);
 });

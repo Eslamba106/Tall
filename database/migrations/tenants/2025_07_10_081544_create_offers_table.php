@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('model_year')->nullable();
             $table->text('description')->nullable();
             $table->string('customer_name')->nullable();
-            $table->string('customer_phone')->nullable(); 
+            $table->string('customer_phone')->nullable();
             $table->timestamps();
         });
     }

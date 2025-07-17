@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\SubscriptionRepositoryInterface;
+use App\Repositories\SubscriptionRepository;
 use Laravel\Sanctum\Sanctum;
 use App\Http\Traits\TenantService;
 use App\Models\PersonalAccessToken;
@@ -14,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('Tenants',function()  
+        $this->app->bind(SubscriptionRepositoryInterface::class, SubscriptionRepository::class);
+
+        $this->app->bind('Tenants',function()
         {
             return new TenantService();
         });
@@ -24,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    { 
+    {
 
- Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);     
+ Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
 }
 }
