@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
 use Exception;
 use App\Models\User;
@@ -11,7 +11,7 @@ use App\Events\StoreCreated;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
     public function create(): View
-    { 
+    {
         return view('auth.register');
     }
 

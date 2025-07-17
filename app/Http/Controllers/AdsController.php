@@ -14,7 +14,6 @@ use App\Models\EstateProduct;
 use App\Models\EstateProductType;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use App\Models\EstateProductTransaction;
 
 class AdsController extends Controller
@@ -50,8 +49,8 @@ class AdsController extends Controller
         'oil' => 'nullable|string|max:100',
         'financing' => 'nullable|string|max:100',
         'price_when_call' => 'nullable|boolean',
-        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',  
-        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120', 
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
         'phone' => 'nullable|string|max:20',
 //        'method' => 'nullable|string|max:100',
     ]);
@@ -59,7 +58,7 @@ class AdsController extends Controller
             $main_ads = $this->ads->store_ads($request);
             return redirect()->route('ads.list')->with('success', __('property_master.added_successfully'));
 //         } catch (\Exception $e) {
-             
+
 //             return redirect()->back()->with("error", $e->getMessage())->withInput()
 // ;
 //         }

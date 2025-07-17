@@ -1,22 +1,22 @@
 <?php
 
-use App\Http\Controllers\admin\CustomerController;
-use App\Http\Controllers\AdsController;
-use App\Http\Controllers\Dashboard;
-use App\Http\Controllers\DealsController;
-use App\Http\Controllers\EstateController;
-use App\Http\Controllers\GeneralController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MainRegistration;
-use App\Http\Controllers\OfferController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\Api\admin\CustomerController;
+use App\Http\Controllers\Api\AdsController;
+use App\Http\Controllers\Api\Dashboard;
+use App\Http\Controllers\Api\DealsController;
+use App\Http\Controllers\Api\EstateController;
+use App\Http\Controllers\Api\GeneralController;
+use App\Http\Controllers\Api\IndexController;
+use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\MainRegistration;
+use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrdersController;
 // use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\Subscriptions;
+use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\SettingsController;
+use App\Http\Controllers\Api\Subscriptions;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,7 +102,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 // offers
 Route::group(['prefix' => 'offer'], function () {
-    Route::get('/list', [OfferController::class, 'list'])->name('offer.list'); 
+    Route::get('/list', [OfferController::class, 'list'])->name('offer.list');
 
 });
     //Deals

@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use App\Events\StoreCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
@@ -28,7 +27,7 @@ class AuthController extends Controller
 
         return view('auth.login');
         // return Inertia::render('Auth/Register');
-    //    return view('auth.login'); 
+    //    return view('auth.login');
     }
 
     /**
@@ -36,14 +35,14 @@ class AuthController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-   
+
     public function add_store(Request $request)
     {
 
 //        DB::beginTransaction();
   //      try {
 
- 
+
         // DB::beginTransaction();
         // try {
 
@@ -103,10 +102,10 @@ class AuthController extends Controller
         Config::set('database.connections.mysql.database', 'tall');
         DB::purge('mysql');
         DB::reconnect('mysql');
-        DB::setDefaultConnection('mysql'); 
+        DB::setDefaultConnection('mysql');
         $databaseName = DB::connection()->getDatabaseName();
         // dd($databaseName);
-        if (Auth::attempt($request->only('email', 'password'))) { 
+        if (Auth::attempt($request->only('email', 'password'))) {
             return redirect()->route('user.dashboard');
             // return redirect()->intended(RouteServiceProvider::HOME);
         }
@@ -116,7 +115,7 @@ class AuthController extends Controller
     }
 
     public function logout()
-    { 
+    {
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();

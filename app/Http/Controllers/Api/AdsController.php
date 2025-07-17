@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\CarType;
 use App\Models\CarModel;
@@ -10,7 +11,6 @@ use App\Models\EstateProductTransaction;
 use App\Models\EstateProductType;
 use App\Services\AdsService;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\EstateProduct;
 
 class AdsController extends Controller
@@ -19,7 +19,7 @@ class AdsController extends Controller
     public $model;
     public function __construct(AdsService $ads)
     {
-        $this->ads = $ads; 
+        $this->ads = $ads;
 
     }
 

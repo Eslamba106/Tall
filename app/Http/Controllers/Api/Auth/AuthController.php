@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth;
+namespace App\Http\Controllers\Api\Api\Auth;
 
 use Exception;
 use App\Models\User;
@@ -10,7 +10,7 @@ use App\Events\StoreCreated;
 use Illuminate\Http\Request;
 use App\Services\UserServices;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -33,10 +33,10 @@ class AuthController extends Controller
             $user = User::with('store')->where('email', $request->email)->first();
             $options = json_decode($user->store->database_options, true);
                         // $token = JWTAuth::attempt(['email' => $user->email, 'password' => $request->password]);
-            $databaseName = DB::connection()->getDatabaseName(); 
+            $databaseName = DB::connection()->getDatabaseName();
 
             // $token_1 = $user->createToken($user->name)->plainTextToken;
-            // $user->setConnection('db_auth');  
+            // $user->setConnection('db_auth');
             $token = $user->createToken('access-token')->plainTextToken;
 
             Config::set('database.connections.tenant.database', $options['dbname']);
@@ -44,7 +44,7 @@ class AuthController extends Controller
             DB::reconnect('tenant');
             DB::setDefaultConnection('tenant');
             $user->setConnection('tenant');
-            
+
 
 
             // $token_2 = $user->createToken($user->name)->plainTextToken;
@@ -61,7 +61,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    { 
+    {
 //        DB::beginTransaction();
   //      try {
             $request->validate([

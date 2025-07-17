@@ -2,57 +2,65 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Services\CustomerService;
 use App\Http\Controllers\Controller;
+use App\Repositories\CustomerRepository;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-        public $customer; 
-    public function __construct(CustomerService $customer)
-    {
-        $this->customer = $customer; 
+    protected $customers;
 
-    }
-        public function store(Request $request)
+    public function __construct(CustomerRepository $customers)
     {
+        $this->customers = $customers;
+    }
 
-        $main_customer = $this->customer->store_customer($request);
-        if (!$main_customer) {
-            return response()->apiFail('Failed to add Customer', 500);
-        }
-        return response()->apiSuccess('Customer added successfully', $main_customer);
-    }
-    public function update(Request $request, $id)
+    public function index()
     {
-        $customer = $this->customer->update_customer($id, $request);
+        $data = $this->customers->getAll();
+        return response()->apiSuccess($data, 'Customers retrieved successfully');
+    }
+
+    public function create()
+    {
+        return response()->apiSuccess([], 'Form data retrieved');
+    }
+
+    public function edit($id)
+    {
+        $customer = $this->customers->find($id);
         if (!$customer) {
             return response()->apiFail('Customer not found', 404);
         }
-        return response()->apiSuccess('Customer updated successfully', $customer);
+        return response()->apiSuccess($customer, 'Customer data retrieved');
     }
-    public function get_customer($id)
+
+    public function store(Request $request)
     {
-        $customer = $this->customer->get_customer($id);
+        $data = $request->only(['user', 'phone', 'note', 'type']);
+        $customer = $this->customers->create([
+            'name' => $data['user'],
+            'phone' => $data['phone'],
+            'note' => $data['note'],
+            'type' => $data['type'],
+        ]);
+        return response()->apiSuccess($customer, 'Customer created successfully');
+    }
+
+    public function update(Request $request)
+    {
+        $customer = $this->customers->find($request->id);
         if (!$customer) {
             return response()->apiFail('Customer not found', 404);
         }
-        return response()->apiSuccess('Customer updated successfully', $customer);
-    }
-    public function list(Request $request)
-    {
-        // return("user" .auth('sanctum')->check());
 
-        $list = $this->customer->get_customer_list();
-        return response()->apiSuccess('Customer List ', $list);
-    }
-    public function delete($id)
-    {
-        $customer = $this->customer->delete_customer($id);
-        if (!$customer) {
-            return response()->apiFail('Customer not found', 404);
-        }
-        return response()->apiSuccess('Customer deleted successfully', $customer);
-    }
+        $this->customers->update($customer, [
+            'name' => $request->user,
+            'phone' => $request->phone,
+            'note' => $request->note,
+            'type' => $request->type,
+        ]);
 
+        return response()->apiSuccess($customer, 'Customer updated successfully');
+    }
 }

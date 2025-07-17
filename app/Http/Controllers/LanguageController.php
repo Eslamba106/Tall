@@ -5,14 +5,13 @@ use App\Http\Helpers\Helpers;
 use Illuminate\Http\Request;
 use App\Models\BusinessSetting;
 use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator; 
+use RecursiveIteratorIterator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\File;
 use function App\Http\Helpers\auto_translator;
-use function App\Http\Helpers\getLanguageCode; 
+use function App\Http\Helpers\getLanguageCode;
 
 class LanguageController extends Controller
 {
@@ -73,7 +72,7 @@ class LanguageController extends Controller
 
         $pnc  = DB::connection('tenant')->table('business_settings')->updateOrInsert(['type' => 'pnc_language'], [
             'value' => json_encode($codes),
-        ]); 
+        ]);
         Toastr::success(translate('Language_Added'));
         return back();
     }
