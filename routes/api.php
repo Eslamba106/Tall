@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Api\Api\SettingsController;
-use App\Http\Controllers\Api\Api\SubscriptionController;
+use App\Http\Controllers\Api\SettingsController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Api\AdsController;
-use App\Http\Controllers\Api\Api\OfferController;
-use App\Http\Controllers\Api\Api\OrderController;
-use App\Http\Controllers\Api\Api\Auth\AuthController;
+use App\Http\Controllers\Api\AdsController;
+use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
