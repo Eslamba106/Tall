@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Api\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
 use Exception;
 use App\Models\User;
@@ -10,7 +10,7 @@ use App\Events\StoreCreated;
 use Illuminate\Http\Request;
 use App\Services\UserServices;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Api\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
 use Tymon\JWTAuth\Facades\JWTAuth;
