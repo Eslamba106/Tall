@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\CustomerController;
@@ -85,4 +86,10 @@ Route::group(['prefix' => 'settings', 'middleware' => 'auth:sanctum'] ,function 
     Route::post('/theme/{theme}', [SettingsController::class, 'themeUpdatePost']);
     Route::get('/export', [SettingsController::class, 'export']);
     Route::post('/export-store', [SettingsController::class, 'exportStore']);
+});
+Route::middleware('auth:sanctum')->prefix('profile')->group(function () {
+    Route::get('/', [ProfileController::class, 'edit']);
+    Route::put('/', [ProfileController::class, 'update']);
+    Route::delete('/', [ProfileController::class, 'destroy']);
+    Route::put('/change-password', [ProfileController::class, 'changePassword']);
 });
