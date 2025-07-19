@@ -49,6 +49,7 @@ class AuthController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+                'username' => 'required|string|lowercase|max:255|unique:' . User::class,
                 'password' => ['required', 'confirmed' ],
             ]);
 
@@ -64,7 +65,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'tenant_id' => $user->id, // Assuming tenant_id is the user ID
                 'status' => 'active', // Default status
-                'domains' => Str::slug($slug, '_'), // Assuming no domains initially
+                'domains' => $request->user_name, // Assuming no domains initially
                 'theme'      => $request->theme,
                 // 'database_options' => null, // Assuming no database options initially
             ]);
