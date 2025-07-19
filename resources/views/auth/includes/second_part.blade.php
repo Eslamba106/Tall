@@ -27,7 +27,7 @@
 
             <!-- البريد الالكتروني -->
             <div style="flex: 1 1 48%;">
-                <label>اسم المستخدم<span style="color: red;">*</span></label>
+                <label>الدومين<span style="color: red;">*</span></label>
                 <input type="text" name="user_name" placeholder="أدخل الدومين الفرعي" required
                     style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #999; background: #000; color: white;">
                       @error('user_name')
