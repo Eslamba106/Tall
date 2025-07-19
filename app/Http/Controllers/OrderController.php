@@ -55,7 +55,7 @@ class OrderController extends Controller
                 'estate_type_id'                => $request->estate_type_id,
                 'estate_transactions_id'        => $request->estate_transactions_id,
                 'description'                   => $request->ads_description,
-,
+ 
             ]);
         } 
         $data = (object) [
