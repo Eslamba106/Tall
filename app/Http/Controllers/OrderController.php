@@ -43,7 +43,7 @@ class OrderController extends Controller
                 'district' => $request->customer_district,
             ]);
         } 
-        if ( !is_null($request->estate_product_id) && !is_null($request->car_type_id)) {
+        if ( !is_null($request->estate_product_id) || !is_null($request->car_type_id)) {
             // dd($request->all());
 
             $customer = Ads::create([
