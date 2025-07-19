@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api\admin;
+namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Api\Controller;
 use App\Models\Customer;
-use App\Services\CustomerService;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use App\Services\CustomerService;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CustomerController extends Controller
 {
