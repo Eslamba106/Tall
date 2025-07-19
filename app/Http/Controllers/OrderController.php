@@ -43,17 +43,28 @@ class OrderController extends Controller
                 'district' => $request->customer_district,
             ]);
         } 
+        if ( !is_null($request->estate_product_id) && !is_null($request->car_type_id)) {
+            // dd($request->all());
+
+            $customer = Ads::create([
+                'name'                          => $request->ads_name,
+                'car_type_id'                   => $request->car_type_id,
+                'car_model_id'                  => $request->car_model_id,
+                'model_year'                    => $request->model_year,
+                'estate_product_id'             => $request->estate_product_id,
+                'estate_type_id'                => $request->estate_type_id,
+                'estate_transactions_id'        => $request->estate_transactions_id,
+                'description'                   => $request->ads_description,
+,
+            ]);
+        } 
         $data = (object) [
             'customer_id' => $request->customer_id ?? $customer->id,
             'ads_id' => $request->ads_id,
             'notes' => $request->note,
             'status' => $request->status ?? null,
         ];
-        // $data = [
-        //     'customer_id' => $request->customer_id ?? $customer->id,
-        //     'ads_id' => $request->ads_id, 
-        //     'note' => $request->note,
-        // ];
+       
         $main_order = $this->order->store_order($data);
         if (!$main_order) {
             return response()->apiFail('Failed to add Order', 500);

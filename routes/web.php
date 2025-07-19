@@ -1,23 +1,24 @@
 <?php
 
-use App\Http\Controllers\admin\CustomerController;
-use App\Http\Controllers\AdsController;
 use App\Http\Controllers\Dashboard;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdsController;
+use App\Http\Controllers\Subscriptions;
 use App\Http\Controllers\DealsController;
-use App\Http\Controllers\EstateController;
-use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MainRegistration;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\EstateController;
+use App\Http\Controllers\MainRegistration;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\GeneralController;
 // use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\Subscriptions;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\Api\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,6 @@ Route::post('publishStore', [MainRegistration::class, 'store'])->name('register.
 Route::group(['prefix' => 'offer'], function () {
     Route::get('/request', [OfferController::class, 'requests'])->name('offer.request');
     Route::post('/store', [OfferController::class, 'store'])->name('offer.store');
-
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {});
@@ -98,13 +98,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/get_customer/{id}', [CustomerController::class, 'get_customer'])->name('admin.customer.get_customer');
         Route::get('/create', [CustomerController::class, 'create'])->name('admin.customer.create');
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
-
     });
-// offers
-Route::group(['prefix' => 'offer'], function () {
-    Route::get('/list', [OfferController::class, 'list'])->name('offer.list');
-
-});
+    // offers
+    Route::group(['prefix' => 'offer'], function () {
+        Route::get('/list', [OfferController::class, 'list'])->name('offer.list');
+    });
     //Deals
     Route::get('/deals', [DealsController::class, 'index'])->name('deals.index');
     Route::post('/deals/change/status', [DealsController::class, 'change'])->name('deals.change');
@@ -161,6 +159,23 @@ Route::group(['prefix' => 'offer'], function () {
         Route::get('/delete/{id}', [OrderController::class, 'delete'])->name('order.delete');
         Route::post('/update/{id}', [OrderController::class, 'update'])->name('order.update');
         Route::get('/get_order/{id}', [OrderController::class, 'get_order'])->name('order.get_order');
+    });
+
+    Route::group(['prefix' => 'subscriptions'], function () {
+        Route::get('/', [SubscriptionController::class, 'index']);
+        Route::get('/bills', [SubscriptionController::class, 'bills']);
+        Route::get('/profile', [SubscriptionController::class, 'profile']);
+        Route::post('/subscribe/{id}', [SubscriptionController::class, 'subscribe']);
+        Route::post('/active/{id}', [SubscriptionController::class, 'active']);
+    });
+
+    Route::group(['prefix' => 'settings'], function () {
+        Route::get('/', [SettingsController::class, 'index']);
+        Route::post('/update', [SettingsController::class, 'update']);
+        Route::get('/theme/{theme}', [SettingsController::class, 'themeUpdate']);
+        Route::post('/theme/{theme}', [SettingsController::class, 'themeUpdatePost']);
+        Route::get('/export', [SettingsController::class, 'export']);
+        Route::post('/export-store', [SettingsController::class, 'exportStore']);
     });
 });
 
