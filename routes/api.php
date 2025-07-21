@@ -39,10 +39,10 @@ Route::group(['prefix' => 'ads', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/get_models/{id}', [AdsController::class, 'get_models'])->name('api.ads.get_models');
     Route::get('/get_cities', [AdsController::class, 'get_cities'])->name('api.ads.get_cities');
     Route::get('/get_districts/{id}', [AdsController::class, 'get_districts'])->name('api.ads.get_districts');
-    Route::get('/get_estate_product', [AdsController::class, 'get_estate_product'])->name('api.ads.get_estate_product');
-    Route::get('/get_estate_product_type/{id}', [AdsController::class, 'get_estate_product_type'])->name('api.ads.get_estate_product');
-    Route::get('/get_estate_product_transaction/{id}', [AdsController::class, 'get_estate_product_transaction'])->name('api.ads.get_estate_product');
-    Route::get('/delete/{id}', [AdsController::class, 'delete'])->name('api.ads.delete');
+        Route::get('/get_estate_product', [AdsController::class, 'get_estate_product'])->name('api.ads.get_estate_product');
+    Route::get('/get_estate_product_type/{id}', [AdsController::class, 'get_estate_product_type'])->name('api.ads.get_estate_product_type');
+    Route::get('/get_estate_product_transaction/{id}', [AdsController::class, 'get_estate_product_transaction'])->name('api.ads.get_estate_product_transaction');
+	Route::get('/delete/{id}', [AdsController::class, 'delete'])->name('api.ads.delete');
     Route::get('/change-status/{id}', [AdsController::class, 'updateStatus'])->name('api.ads.updateStatus');
 });
 Route::group(['prefix' => 'customer', 'middleware' => 'auth:sanctum'], function () {
