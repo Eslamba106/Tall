@@ -67,6 +67,7 @@ class AuthController extends Controller
                 'status' => 'active', // Default status
                 'domains' => $request->user_name, // Assuming no domains initially
                 'theme'      => $request->theme,
+                'ip'        => $request->ip() ?? null, // Capture the IP address
                 // 'database_options' => null, // Assuming no database options initially
             ]);
             event(new StoreCreated($store));
