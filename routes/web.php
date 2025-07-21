@@ -31,6 +31,10 @@ use App\Http\Controllers\Api\SubscriptionController;
 |
 */
 
+// Route::get('/', function (){
+//     return view('welcome');
+
+// })->name('index');
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::post('/estatefilter', [IndexController::class, 'estatefilter'])->name('estatefilter');
 Route::get('/estate/{slug}', [ProductsController::class, 'index'])->name('products');
@@ -83,8 +87,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/get_cities', [AdsController::class, 'get_cities'])->name('ads.get_cities');
         // Route::get('/get_districts/{id}', [AdsController::class, 'get_districts'])->name('ads.get_districts');
         Route::get('/get_estate_product', [AdsController::class, 'get_estate_product'])->name('ads.get_estate_product');
-        Route::get('/get_estate_product_type/{id}', [AdsController::class, 'get_estate_product_type'])->name('ads.get_estate_product');
-        Route::get('/get_estate_product_transaction/{id}', [AdsController::class, 'get_estate_product_transaction'])->name('ads.get_estate_product');
+        Route::get('/get_estate_product_type/{id}', [AdsController::class, 'get_estate_product_type'])->name('ads.get_estate_product_type');
+        Route::get('/get_estate_product_transaction/{id}', [AdsController::class, 'get_estate_product_transaction'])->name('ads.get_estate_product_transaction');
         Route::get('/delete/{id}', [AdsController::class, 'delete'])->name('ads.delete');
         Route::get('/change-status/{id}', [AdsController::class, 'updateStatus'])->name('ads.updateStatus');
         Route::get('/show/{id}', [AdsController::class, 'show'])->name('ads.show');
