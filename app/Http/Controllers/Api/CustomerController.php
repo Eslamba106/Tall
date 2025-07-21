@@ -35,6 +35,15 @@ class CustomerController extends Controller
         return response()->apiSuccess($customer, 'Customer data retrieved');
     }
 
+
+	 public function list()
+    {
+        $customers = $this->customers->getAll();
+        return response()->apiSuccess($customers, 'Customer list retrieved successfully');
+    }
+
+
+
     public function store(Request $request)
     {
         $data = $request->only(['user', 'phone', 'note', 'type']);
@@ -46,6 +55,12 @@ class CustomerController extends Controller
         ]);
         return response()->apiSuccess($customer, 'Customer created successfully');
     }
+
+
+
+
+
+
 
     public function update(Request $request)
     {

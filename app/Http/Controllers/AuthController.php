@@ -72,7 +72,7 @@ class AuthController extends Controller
             event(new StoreCreated($store));
 
 
-//            Auth::login($user);
+            Auth::login($user);
     //        DB::commit();
             $fullDomain = "https://{$store->domains}.tall3.com" ; // مثال: https://myshop.example.com
 

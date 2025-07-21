@@ -34,7 +34,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum'], function () {
 });
 Route::group(['prefix' => 'ads', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/store', [AdsController::class, 'store'])->name('api.ads.store');
-    Route::get('/list', [AdsController::class, 'list'])->name('api.ads.list');
+    Route::get('/list', [AdsController::class, 'index'])->name('api.ads.list');
     Route::get('/get_cars', [AdsController::class, 'get_cars'])->name('api.ads.get_cars');
     Route::get('/get_models/{id}', [AdsController::class, 'get_models'])->name('api.ads.get_models');
     Route::get('/get_cities', [AdsController::class, 'get_cities'])->name('api.ads.get_cities');

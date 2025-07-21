@@ -29,6 +29,17 @@ class AdsController extends Controller
         $main_ads = $this->ads->store_ads($request);
         return response()->apiSuccess( $main_ads);
     }
+
+   public function index()
+    {
+        // منطقك هنا
+         $list = $this->ads->get_ads_list();
+        return response()->apiSuccess( $list );
+    }
+
+
+
+
     public function list(Request $request)
     {
         // return("user" .auth('sanctum')->check());

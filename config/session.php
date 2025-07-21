@@ -155,9 +155,9 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    // 'domain' => env('SESSION_DOMAIN'),
 
-    /*
+    'domain' => env('SESSION_DOMAIN', '.tall3.com'),    /*
     |--------------------------------------------------------------------------
     | HTTPS Only Cookies
     |--------------------------------------------------------------------------
@@ -195,8 +195,8 @@ return [
     | Supported: "lax", "strict", "none", null
     |
     */
-
-    'same_site' => 'lax',
+	'same_site' => 'none',
+    // 'same_site' => 'lax',
 
     /*
     |--------------------------------------------------------------------------
