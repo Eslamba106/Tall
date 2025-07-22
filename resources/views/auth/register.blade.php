@@ -24,7 +24,7 @@
     <div class="row align-items-center">
         <!-- الفورم -->
         <div class="col-md-6  " >
-            <form action="{{ route('register.add-store') }}" method="post">
+            <form action="{{ route('register.store') }}" method="post">
                 @csrf
                 <div class="tab-content" id="first_step">
                     <div class="tab-pane fade show active" id="step1">

@@ -31,6 +31,10 @@ use App\Http\Controllers\Api\SubscriptionController;
 |
 */
 
+// Route::get('/', function (){
+//     return view('welcome');
+
+// })->name('index');
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::post('/estatefilter', [IndexController::class, 'estatefilter'])->name('estatefilter');
 Route::get('/estate/{slug}', [ProductsController::class, 'index'])->name('products');

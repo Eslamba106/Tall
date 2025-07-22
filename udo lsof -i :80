@@ -1,0 +1,15 @@
+[0;1;31m×[0m apache2.service - The Apache HTTP Server
+     Loaded: loaded (]8;;file://srv890307/usr/lib/systemd/system/apache2.service/usr/lib/systemd/system/apache2.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Mon 2025-07-21 22:09:13 UTC; 32s ago
+       Docs: ]8;;https://httpd.apache.org/docs/2.4/https://httpd.apache.org/docs/2.4/]8;;
+    Process: 3156 ExecStart=/usr/sbin/apachectl start [0;1;31m(code=exited, status=1/FAILURE)[0m
+        CPU: 39ms
+
+Jul 21 22:09:13 srv890307 systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Jul 21 22:09:13 srv890307 apachectl[3171]: (98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+Jul 21 22:09:13 srv890307 apachectl[3171]: (98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+Jul 21 22:09:13 srv890307 apachectl[3171]: no listening sockets available, shutting down
+Jul 21 22:09:13 srv890307 apachectl[3171]: AH00015: Unable to open logs
+Jul 21 22:09:13 srv890307 systemd[1]: [0;1;39m[0;1;31m[0;1;39mapache2.service: Control process exited, code=exited, status=1/FAILURE[0m
+Jul 21 22:09:13 srv890307 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mapache2.service: Failed with result 'exit-code'.[0m
+Jul 21 22:09:13 srv890307 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start apache2.service - The Apache HTTP Server.[0m

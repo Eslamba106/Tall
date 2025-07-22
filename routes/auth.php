@@ -16,8 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'create'])
                 ->name('register');
-    Route::post('add-store', [AuthController::class, 'add_store'])
-                ->name('register.add-store');
+    Route::post('add_store', [AuthController::class, 'add_store'])
+                ->name('register.store');
 
     // Route::post('register', function(){
     //     return "fsg";
