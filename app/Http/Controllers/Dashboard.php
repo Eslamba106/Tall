@@ -108,7 +108,7 @@ class Dashboard extends Controller
     }
     public function user_dashboard(Request $request)
     {
-        // dd("fad");
+        
         $store = (new Store())->setConnection('tenant')->where('ip', $request->ip())->latest()->orderBy('created_at', 'desc')->first();
         if($store && !auth()->check()) {
             Auth::loginUsingId($store->tenant_id); 

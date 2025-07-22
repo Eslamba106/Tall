@@ -58,9 +58,9 @@ return [
     */
 
 
-    'url' => env('APP_URL', 'https://tall3.com/'),
+    'url' => env('APP_URL', 'http://localhost/tall3.com/'),
 
-    'asset_url' => 'https://tall3.com',
+    'asset_url' => 'http://localhost/tall3.com/public',
     
 
     /*

@@ -17,7 +17,7 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'create'])
                 ->name('register');
     Route::post('add-store', [AuthController::class, 'add_store'])
-                ->name('register.add-store');
+                ->name('register_tenant');
 
     // Route::post('register', function(){
     //     return "fsg";

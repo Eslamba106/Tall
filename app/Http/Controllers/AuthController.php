@@ -45,18 +45,19 @@ class AuthController extends Controller
 
         // DB::beginTransaction();
         // try {
+        // dd($request->all());
 
             $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-                'username' => 'required|string|lowercase|max:255|unique:' . User::class,
-                'password' => ['required', 'confirmed' ],
+                'email' => 'required|string|email|max:255|unique:' . User::class,
+                'username' => 'required|string|max:255|unique:' . User::class,
+                'password' => ['required' ],
             ]);
 
             $user = (new User())->setConnection('mysql')->create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'username' => $request->user_name,
+                'username' => $request->username,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
             ]);
@@ -65,7 +66,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'tenant_id' => $user->id, // Assuming tenant_id is the user ID
                 'status' => 'active', // Default status
-                'domains' => $request->user_name, // Assuming no domains initially
+                'domains' => $request->username, // Assuming no domains initially
                 'theme'      => $request->theme,
                 'ip'        => $request->ip() ?? null, // Capture the IP address
                 // 'database_options' => null, // Assuming no database options initially
@@ -75,7 +76,7 @@ class AuthController extends Controller
 
 //            Auth::login($user);
     //        DB::commit();
-            $fullDomain = "https://{$store->domains}.tall3.com" ; // مثال: https://myshop.example.com
+            $fullDomain = "http://{$store->domains}.localhost/tall3.com/admin/dash" ; // مثال: https://myshop.example.com
 
 		return redirect()->to($fullDomain);
     //    } catch (Exception $e) {
