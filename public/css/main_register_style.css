@@ -1,0 +1,100 @@
+
+
+:root {
+    /* Start Our Variables */
+    --main_color: #009877;
+    --bg_color: #F8F8F8;
+    --black_color: #000000;
+    --white_color: #FFFFFF;
+    --red_color: #FF3C3F;
+    --gray_color: #D7D7D780;
+    --greey_color: #5B5B5B;
+    /* End Our Variables */
+    
+    --md-sys-color-primary: #009877;
+
+    --md-outlined-select-text-field-outline-color: #6e7979;
+    --md-outlined-select-text-field-container-shape: 24px;
+    --md-outlined-text-field-container-shape: 24px;
+    --md-outlined-select-text-field-input-text-color: #54b7b7;
+    --md-sys-typescale-body-font: 'Lama Sans';
+
+}
+
+md-outlined-select::part(menu) {
+  --md-menu-container-color: #f6f4fb;
+  --md-menu-container-shape: 24px;
+}
+
+@font-face {
+  font-family: 'Lama Sans';
+  src: url(./assets/Fonts/LamaSans-SemiBold.ttf);
+}
+
+body {
+  direction: rtl !important;
+  font-family: 'Lama Sans';
+  background-color: var(--white_color);
+}
+
+
+.main-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main-image img {
+  width: 100%;
+}
+
+.main-btn {
+  background-color: var(--main_color);
+  color: var(--white_color);
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+md-outlined-text-field, md-filled-text-field ,md-filled-button,label,input{
+  font-family: 'Lama Sans' !important;
+}
+
+md-checkbox{
+  margin: 4px  0 0 12px;
+}
+
+.main-link {
+  color: var(--greey_color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.main-link:hover {
+  color: var(--main_color);
+}
+
+p {
+  font-size: 14px;
+  color: var(--greey_color);
+  font-weight: 400;
+}
+
+.main-color {
+  color: var(--main_color);
+}
+
+.bg-black {
+  background-color: var(--black_color) ;
+  --md-sys-color-primary: var(--black_color);
+}
+
+.bg-color{
+  background-color: var(--bg_color);
+}

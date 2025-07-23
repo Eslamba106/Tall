@@ -48,16 +48,16 @@ Route::post('/model', [IndexController::class, 'model'])->name('estate.model');
 Route::get('/autoLoginBase/{hash}', [IndexController::class, 'autoLoginBase'])->name('autoLoginBase');
 Route::get('/superLoginer', [IndexController::class, 'autoLogin'])->name('autoLogin');
 
-Route::post('publishStore', [MainRegistration::class, 'store'])->name('register.store');
+//Route::post('publishStore', [MainRegistration::class, 'store'])->name('register.store');
 Route::group(['prefix' => 'offer'], function () {
     Route::get('/request', [OfferController::class, 'requests'])->name('offer.request');
     Route::post('/store', [OfferController::class, 'store'])->name('offer.store');
 });
-
+Route::get('admin/dash', [Dashboard::class, 'user_dashboard'])->name('user.dashboard');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {});
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', [Dashboard::class, 'index'])->name('dashboard.index');
-    Route::get('/dash', [Dashboard::class, 'user_dashboard'])->name('user.dashboard');
+//    Route::get('/dash', [Dashboard::class, 'user_dashboard'])->name('user.dashboard');
     Route::get('/stores', [Dashboard::class, 'stores'])->name('dashboard.stores');
     Route::get('/store/{name}', [Dashboard::class, 'single'])->name('super.single');
     Route::post('/delete/{name}', [Dashboard::class, 'delete'])->name('super.delete');

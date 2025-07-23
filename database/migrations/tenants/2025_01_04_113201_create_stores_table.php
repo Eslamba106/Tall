@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('ip')->nullable(); 
             $table->string('theme');
             $table->tinyInteger('tenant_id')->nullable();
             $table->string('status')->default('active'); // Assuming 'stautus' is a typo for 'status'

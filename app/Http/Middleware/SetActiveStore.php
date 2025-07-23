@@ -1,11 +1,12 @@
 <?php
 namespace App\Http\Middleware;
 
-use App\Models\Store;
 use Closure;
+use App\Models\Store;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetActiveStore
@@ -30,7 +31,10 @@ class SetActiveStore
             DB::purge('tenant');
             DB::reconnect('tenant');
             DB::setDefaultConnection('tenant');
-
+//            if($store->ip == $request->ip()) {
+  //              Auth::loginUsingId($store->tenant_id);
+    //        }
+            // Auth::loginUsingId($store->tenant_id); 
             app()->instance('store', $store);
         }
         

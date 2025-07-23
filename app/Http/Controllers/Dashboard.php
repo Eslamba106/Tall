@@ -88,7 +88,7 @@ class Dashboard extends Controller
 
             $link = 'https://' . $tenantStor->domains . '.tall3.com/' . 'admin/dash';
             return redirect()->to($link);
-            dd($tenant);
+//            dd($tenant);
             $tenantStor = Store::where('tenant_id', $user->id)->first();
             // dd($tenantStor);
             if (! is_null($tenantStor)) {
@@ -108,12 +108,18 @@ class Dashboard extends Controller
     }
     public function user_dashboard(Request $request)
     {
+
         // dd("fad");
       //  $store = (new Store())->setConnection('tenant')->where('ip', $request->ip())->latest()->orderBy('created_at', 'desc')->first();
 //        if($store && !auth()->check()) {
   //          Auth::loginUsingId($store->tenant_id); 
+
+        
+    $store = (new Store())->setConnection('tenant')->where('ip', $request->ip())->latest()->orderBy('created_at', 'desc')->first();
+      if($store && !auth()->check()) {
+           Auth::loginUsingId($store->tenant_id); 
             
-    //    }
+    }
         $tenant = Tenants::getTenant();
         $user   = Auth::user();
         if ($user->super == 1) {

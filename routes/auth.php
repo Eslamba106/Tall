@@ -13,11 +13,16 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use Illuminate\Http\Request;
 
+    Route::post('register_tenant', [AuthController::class, 'add_store'])
+                ->name('register_tenant');
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'create'])
                 ->name('register');
-    Route::post('add_store', [AuthController::class, 'add_store'])
-                ->name('register.store');
+//    Route::post('add_store', [AuthController::class, 'add_store'])
+  //              ->name('register.store');
+//    Route::post('add-store', [AuthController::class, 'add_store'])
+  //              ->name('register_tenant');
 
     // Route::post('register', function(){
     //     return "fsg";
